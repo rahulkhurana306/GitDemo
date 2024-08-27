@@ -1,0 +1,6 @@
+KFLOANDETS	Keyword Framework Macro		0	N	Y	A
+00001	MACRO		'NAVLOAN1'	Loan Requirements
+00002	MACRO		'NAVASSESSINC'	Assessable Income
+00003	MACRO		'NAVAFFORD'	Client Affordability
+00004	MACRO		'NAVGUIDELINE1'	Guideline Checks
+00005	COMMIT			

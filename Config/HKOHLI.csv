@@ -1,0 +1,11 @@
+#EnvironmentKey,Value,Description
+
+
+SUMMIT_ENV_URL,http://dlnxmssfobug02.noid.in.sopra:8888/forms/frmservlet?config=MRHNAUT9standalone,
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHNAUT9/print_outs,
+SUMMIT_REMOTE_SID,MRHNAUT9,
+SUMMIT_DB_HOST_SERVICE,MRHNAUT9
+JOB_TIMEOUT_ACEC,100
+RUN_MODE,3,Use 1 for PreReq mode; Use 2 for TestSteps mode; Use 3 or any other value to run both of sheets - normally for development mode
+
+#TODO - Fix format - Account number generation for different account types.

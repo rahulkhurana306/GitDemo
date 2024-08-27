@@ -1,0 +1,34 @@
+RUN_MODE,3
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnxmssfobug02.noid.in.sopra:8888/forms/frmservlet?config=MRHAUT11standalone,
+SUMMIT_REMOTE_SID,MRHAUT11,
+SUMMIT_DB_HOST_SERVICE,MRHAUT11
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHAUT11/print_outs,
+SUMMIT_TITLE,MRHAUT11
+
+SUMMIT_DB_HOST_NAME,dlnxmssautodb02.noid.in.ssg
+SUMMIT_REMOTE_HOST,dlnxmssautodb02.noid.in.ssg,
+EID_SERVLET_URL,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services/ElectronicIdentificationWebService
+EQUIFAX_AIS_WEBSERVICE_URL,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services/CreditSearch
+
+QUEST_HOSTNAME,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services
+AWE_AIS_WEBSERVICE_URL,https://dlnxmss5eap01.noid.in.ssg:28553/aisws/awe/services/sendMessageToQueue
+API_SERVICE_URL,https://slnxmssaxway03.woki.uk.ssg:18589
+
+EXTERNAL_AFFORDABILITY_HOSTNAME,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services
+EXTERNAL_AFFORDABILITY_WEBSERVICE_URL,/CalculateExternalAffordability
+
+HOPEWISER_PAF_WEBSERVICE_URL,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services/AddressSearch
+QASPROWEB_PAF_WEBSERVICE_URL,https://dlnxmss5eap01.noid.in.ssg:28553/mssinteg/mss-integration-services/AddressSearch
+HOPEWISER_PAF_LU_WEBSERVICE_URL,https://slnxmssaxway03.woki.uk.ssg:18589/api/services/hpwAddressServer?wsdl
+
+LISA_URL,https://dlnxmss5eap01.noid.in.ssg:28553/lisa-web-services/login,
+LISA_CLIENT_ID,ZGVSn9MlGk6Ieom9FHFw0JJ3GjHW,LISA Auto Transformation MSS6
+LISA_CLIENT_SECRET,7c8a9954-11eb-4042-8bc9-df2f20594b73,LISA Auto Transformation MSS6
+
+SERVER_DB_DEFAULT_HOSTNAME,dlnxmssautodb02.noid.in.ssg
+SERVER_OFM_HOSTNAME,dlnxmssfobug02.noid.in.sopra
+SERVER_DB_HOSTNAME,dlnxmssautodb02.noid.in.ssg
+
+GET_DOCUMENT_URL,https://dlnxmss5eap01.noid.in.ssg:28553/aisws/documentserver/GetDocument?

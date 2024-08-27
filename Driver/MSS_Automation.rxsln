@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+# Ranorex Studio 10.1.0
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B419A1C-6EB5-4EAE-8422-5BDEFAD27B5C}"
+	ProjectSection(SolutionItems) = postProject
+		Ranorex = .\Ranorex.rxsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSS_Automation", "MSS_Automation\MSS_Automation.csproj", "{B8001E9F-5F34-4398-A332-5C156A37F868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8001E9F-5F34-4398-A332-5C156A37F868}.Debug|x86.Build.0 = Debug|x86
+		{B8001E9F-5F34-4398-A332-5C156A37F868}.Debug|x86.ActiveCfg = Debug|x86
+		{B8001E9F-5F34-4398-A332-5C156A37F868}.Release|x86.Build.0 = Release|x86
+		{B8001E9F-5F34-4398-A332-5C156A37F868}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+EndGlobal

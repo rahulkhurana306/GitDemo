@@ -1,0 +1,2 @@
+BLANK	No Script Macro - Testing		0	N	Y	A
+00001	COMMENT		This is a test macro to skip APPENTRYMAIN macro under Work Team Maintenance.	

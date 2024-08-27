@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modulegroupdoc>
+  <testsuiteentryhierarchy>
+    <flatlistofchildren>
+      <modulegroups
+      name="MSS_Automation"
+      id="6594e61c-4331-4420-bf11-a01ab08cd23e"/>
+    </flatlistofchildren>
+    <childhierarchy>
+      <modulegroups
+      name="MSS_Automation"
+      id="6594e61c-4331-4420-bf11-a01ab08cd23e"/>
+    </childhierarchy>
+  </testsuiteentryhierarchy>
+</modulegroupdoc>

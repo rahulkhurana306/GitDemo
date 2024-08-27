@@ -1,0 +1,20 @@
+KFILLGENDETS2	Illustration Full Entry		0	N	Y	A
+00001	COMMENT		Macro for Illustration Entry CR02136	Wfl00172 Wfl00175 Wfl000284
+00002	DECLARE		FORM,@CONTINUE,response	Send For References
+00003	COMMENT		Proc Fees inserted to ensure fees are calculated at illustration stage for KFI - Robin Jolliffe 10/06/2013	
+00004	IF		$APPDIRECT = 'Y',CONT	
+00005	SERVICE		'NVUO_MACRO_PROCFEES','',''	Proc Fee Calc 
+00006	WINDOW		'W_AP010_01_06','',''	Procurement Fee
+00007	NAVIGATOR	CONT	'OFF','1'	
+00008	CHOOSE		response,'Do you want to save the illustration?','Yes','Y','No','N'	
+00009	IF		response = 'Y',SAVILL	
+00010	IF		response = 'N',ROLL	
+00011	ROLLBACK	ROLL		
+00012	RETURN			
+00013	RETURN			
+00014	MACRO	SAVILL	'UNDERWRITE'	Display Underwriting Errors & Missing Data
+00015	COMMENT		Illustration Package added to allow KFI to be printed - Robin Jolliffe (Sopra) 04/06/2013	
+00016	PACKAGE		'ILLUSKFI'	Illustration KFI Package
+00017	COMMIT			
+00018	WINDOW		'W_ILLUST_CONTROL','',''	Illustration Control Window
+00019	RETURN			

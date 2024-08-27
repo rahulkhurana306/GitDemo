@@ -1,0 +1,6 @@
+KFILLCLIENTDETS	Keyword Framework Macro		0	N	Y	A
+00001	WINDOW		'W_AP010_03','',''	Applicant Details
+00002	WINDOW		'W_AP010_11','',''	Credit Declarations
+00003	WINDOW		'W_AP010_06','',''	Occupancy Details
+00004	WINDOW		'W_AP010_12','',''	Employment Details
+00005	WINDOW	*	'W_AP010_07','',''	Other Income And Expenditure

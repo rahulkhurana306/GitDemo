@@ -1,0 +1,5 @@
+KFFNDRELDETS2	Test		0	N	Y	A
+00001	COMMENT		Execute this macro after executing KFFNDRELDETS1.	
+00002	WINDOW		'W_MA147_04','TT',''	Batch Generation Confirmation
+00003	WINDOW		'W_AP264_01','',''	Generate Chaps File Funder Selection
+00004	SERVICE		'NVUO_MACRO_FUNDS_CHAPS','',''	Release CHAPS Funds (Batch)

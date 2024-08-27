@@ -1,0 +1,2 @@
+INS_FILEGEN	Call s_insurance_filegen		0	N	Y	A
+00001	SERVICE		'S_INSURANCE_FILEGEN','',''	Insurance Interface File Generation

@@ -1,0 +1,21 @@
+KFDDDTLSPR	Keyword Framework Macro		0	N	Y	A
+00001	COMMENT		Navigator Direct Debit Bank Details	Wfl00117
+00002	DECLARE		PAYMETH,@FIRSTTIME	
+00003	SELECT		'NVL(ACM06.PMNTMETHOD,'XX') INTO :PAYMETH FROM ACM06 WHERE ACM06.MORTGAGE = :$MORTGAGE'	Check the payment method
+00004	IF		PAYMETH # 'DD',END	Only open direct debit if appropriate
+00005	WINDOW		'W_AP010_04','',''	Direct Debit Bank Details
+00006	PACKAGE		'APPFORM'	Application Form
+00007	SERVICE		'NVUO_MACRO_NEWSTAGE','A','10'	Check Whether Case Can Move To New Stage
+00008	COMMIT			
+00009	PACKAGE		'REFPKG'	Reference Package
+00010	RETURN			
+00011	IF	END	@FIRSTTIME = 'Y',FINAL	No message if first time through
+00012	MESSAGEBOX		PAYMETH,'Direct Debit Details','Currently mortgage payment is not by Direct Debit',INFORMATION,OK	
+00013	PACKAGE		'APPFORM'	Application Form
+00014	SERVICE		'NVUO_MACRO_NEWSTAGE','A','10'	Check Whether Case Can Move To New Stage
+00015	PACKAGE		'REFPKG'	Reference Package
+00016	RETURN			
+00017	LET	FINAL	@FIRSTTIME = 'N'	Reset to indicate not first time through
+00018	PACKAGE		'APPFORM'	Application Form
+00019	SERVICE		'NVUO_MACRO_NEWSTAGE','A','10'	Check Whether Case Can Move To New Stage
+00020	PACKAGE		'REFPKG'	Reference Package

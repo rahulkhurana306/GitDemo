@@ -1,0 +1,11 @@
+RUN_MODE,1
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnxmss56ofmqa1.noid.in.ssg:8888/forms/frmservlet?config=MRHQAUT6standalone,
+SUMMIT_DB_HOST_NAME,dlnxmssautoqadb.noid.in.ssg
+SUMMIT_REMOTE_SID,MRHQAUT6,
+SUMMIT_DB_HOST_SERVICE,MRHQAUT6
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHQAUT6/print_outs,
+SUMMIT_TITLE,MSS 5.0.0.0
+API_SERVICE_URL, https://dlnxaxwduns01.woki.uk.ssg:48589
+ACTIVATE_DIR, D:\Projects\MRHQAUT6

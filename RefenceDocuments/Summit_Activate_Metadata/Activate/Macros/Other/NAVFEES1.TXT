@@ -1,0 +1,8 @@
+NAVFEES1	Fees		0	N	Y	A
+00001	COMMENT		Fees including HLC Details	Wfl00117, Wfl00137 Wfl00240
+00002	WINDOW		'W_AP012_01','',''	Fee Charges
+00003	MACRO		'HLCDETS'	HLC Details
+00004	SERVICE		'NVUO_MACRO_EARLY_REDEMPTION_FEES','',''	Calculate Early Redemption Fees
+00005	WINDOW	*	'W_AP010_02_08','',''	Early Redemption Fees
+00006	SERVICE		'S_REPAYMENTAPR','',''	Repayment/Apr Calculation
+00007	COMMIT			

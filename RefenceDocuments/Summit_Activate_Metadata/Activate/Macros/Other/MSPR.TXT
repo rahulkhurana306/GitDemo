@@ -1,0 +1,6 @@
+MSPR	Test Dcr-827		0	N	Y	A
+00001	DECLARE		@mortgage,@applseq	variables declared
+00002	LET		@mortgage = $MORTGAGE	
+00003	LET		@applseq = $APPLSEQ	
+00004	WINDOW		'W_MSPR_UNDERWRITING','D:\Startup\AJAIN\DCR-827\Fee Registration.HTML?Prompt1=[@mortgage]&Prompt2=[@applseq]&FeeRegistrationReference=APP&EnableThirdPartyCards=Yes&Update=True','ANY TITLE; MAX'	MSPR Underwriting Data
+00005	MESSAGEBOX		,'Return Value',$RETURNDATA,INFORMATION,OK	

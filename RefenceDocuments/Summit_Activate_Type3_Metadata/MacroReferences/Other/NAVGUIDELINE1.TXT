@@ -1,0 +1,5 @@
+NAVGUIDELINE1	Guideline Checks		0	N	Y	A
+00001	COMMENT		Perform Guideline Checks and show results	Wfl00169
+00002	SERVICE		'S_GUIDELINE_CHECKS','',''	Guideline Checks Service
+00003	WINDOW	*	'W_AP037_01_06','',''	Guideline Checks Results
+00004	COMMIT			

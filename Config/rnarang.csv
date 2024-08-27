@@ -1,0 +1,12 @@
+RUN_MODE,3
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnxmss56ofmqa1.noid.in.ssg:8888/forms/frmservlet?config=MRHQAUT1standalone,
+SUMMIT_DB_HOST_NAME,dlnxmssautoqadb.noid.in.ssg
+SUMMIT_REMOTE_SID,MRHQAUT1,
+SUMMIT_DB_HOST_SERVICE,MRHQAUT1
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHQAUT1/print_outs,
+SUMMIT_TITLE,MSS 5.0.0.0
+
+
+ACTIVATE_DIR,E:\Projects\MRHQAUT1

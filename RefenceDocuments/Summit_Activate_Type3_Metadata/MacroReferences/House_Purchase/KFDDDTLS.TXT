@@ -1,0 +1,12 @@
+KFDDDTLS	Keyword Framework Macro		0	N	Y	A
+00001	COMMENT		Navigator Direct Debit Bank Details	Wfl00117
+00002	DECLARE		PAYMETH,@FIRSTTIME	
+00003	SELECT		'NVL(ACM06.PMNTMETHOD,'XX') INTO :PAYMETH FROM ACM06 WHERE ACM06.MORTGAGE = :$MORTGAGE'	Check the payment method
+00004	IF		PAYMETH # 'DD',END	Only open direct debit if appropriate
+00005	WINDOW		'W_AP010_04','',''	Direct Debit Bank Details
+00006	COMMIT			
+00007	RETURN			
+00008	IF	END	@FIRSTTIME = 'Y',FINAL	No message if first time through
+00009	MESSAGEBOX		PAYMETH,'Direct Debit Details','Currently mortgage payment is not by Direct Debit',INFORMATION,OK	
+00010	RETURN			
+00011	LET	FINAL	@FIRSTTIME = 'N'	Reset to indicate not first time through

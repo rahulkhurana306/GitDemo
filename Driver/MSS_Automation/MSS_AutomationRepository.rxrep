@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repository
+name="MSS_AutomationRepository"
+id="dc8289f1-74fc-4731-9dbb-c3502d1e8a5a">
+  <codegen
+  classname="MSS_AutomationRepository"
+  namespace="MSS_Automation"/>
+  <rootfolder
+  name="Root"
+  id="8ff77ae7-3c50-4c77-a67e-37f03f3d3338"
+  searchtimeout="30000ms"
+  capname="unknown"
+  isrooted="True"
+  usecache="True">
+    <basepath/>
+  </rootfolder>
+  <variables/>
+</repository>

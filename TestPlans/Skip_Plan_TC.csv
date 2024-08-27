@@ -1,0 +1,31 @@
+144379,LISA Getting the error 41033 while retrieving the payment via LIBCLE screen,MSD-82514,25/07/2023
+144601,Unable to withdraw funds for property purchase if more than one auth_payee is active for an LISA account,MSD-55409,25/08/2023
+146720,ACRE Popup Message,MSD-81911,22/06/2023
+144475,Validate that upon posting closure LITI or LIID is updated as the reason for the closure transaction if the terminal illnes or Death is registered,MSD-83029,1/9/2023
+145659,Loan Requirement throws Error "Summit API Call Number: 27 Get FM Model Accounts-MA05. ORA-01403: No data found" after running re-cloning service S_RECLONE,MSD-83045,21/09/2023
+144954,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+144969,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+144977,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+144985,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+144992,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+144990,EID > CCGVM Screen to accept more than 100 characters,MSD-83198,25/09/2023
+153181,Issue in incorrect FMVM being created,MSD-83320,05/10/2023
+145006,Warning 11192 on DREV Screen for Customers having no account,MSD-83392,12/10/2023
+144961,BCUVL Completed Events not visible,MSD-83504,23/10/2023
+144635,Report not generating in Forms Cache,MSD-xxxxx,23/10/2023
+145443,Report not generating in Forms Cache,MSD-xxxxx,23/10/2023
+146675,Report not generating in Forms Cache,MSD-xxxxx,23/10/2023
+145440,Report not generating in Forms Cache,MSD-xxxxx,23/10/2023
+154211,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154212,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154222,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154229,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154338,PSD failed one are skip,MSD-xxxxx,30/10/2023
+156786,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154223,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154213,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154220,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154225,PSD failed one are skip,MSD-xxxxx,30/10/2023
+154218,PSD failed one are skip,MSD-xxxxx,08/11/2023
+154217,PSD failed one are skip,MSD-xxxxx,09/11/2023
+154228,PSD failed one are skip,MSD-xxxxx,15/11/2023

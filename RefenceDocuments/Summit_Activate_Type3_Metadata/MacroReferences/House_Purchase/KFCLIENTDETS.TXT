@@ -1,0 +1,10 @@
+KFCLIENTDETS	Keyword Framework Macro		0	N	Y	A
+00001	WINDOW		'W_AP010_03','',''	Applicant Details
+00002	WINDOW		'W_AP010_06','',''	Occupancy Details
+00003	WINDOW		'W_AP010_03_02_02','',''	Applicant Bank Details Window
+00004	WINDOW		'W_AP010_35_05','',''	Receipt Of Proof Of Id
+00005	WINDOW		'W_AP010_12','',''	Employment Details
+00006	WINDOW	*	'W_AP010_07','',''	Other Income And Expenditure
+00007	WINDOW	*	'W_AP010_29','',''	Client Guarantees Window
+00008	WINDOW		'W_AP010_11','',''	Credit Declarations
+00009	COMMIT			

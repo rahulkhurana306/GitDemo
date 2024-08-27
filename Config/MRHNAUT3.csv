@@ -1,0 +1,10 @@
+RUN_MODE,3
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnxmssfobug02.noid.in.sopra:8888/forms/frmservlet?config=MRHNAUT3standalone,
+SUMMIT_REMOTE_SID,MRHNAUT3,
+SUMMIT_DB_HOST_SERVICE,MRHNAUT3
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHNAUT3/print_outs,
+SUMMIT_TITLE,MRHNAUT3
+LISA_URL,https://dlnxmss5eap02.woki.uk.ssg:28443/lisa-web-services/login,
+

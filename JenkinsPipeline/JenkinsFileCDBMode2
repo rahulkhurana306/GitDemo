@@ -1,0 +1,332 @@
+def TestPlanLauncher(TEST_PLAN_NAME,NODE_NAME,TARGET_SUMMIT_ENV,RETRY_ENABLE,VIDEO_RECORDING){
+    echo "Executing Job For Plan ---TestPlan: ${TEST_PLAN_NAME} -- ENV: ${TARGET_SUMMIT_ENV} -- NODE: ${NODE_NAME}"
+    build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "${params.BRANCH_NAME}"), string(name: 'TEST_PLAN_NAME', value: "${TEST_PLAN_NAME}"),string (name: 'NODE_NAME', value: "${NODE_NAME}"), string(name: 'TARGET_SUMMIT_ENV', value: "${TARGET_SUMMIT_ENV}"),  string(name: 'RUN_MODE', value: "${params.RUN_MODE}"), string(name: 'ENABLE_SCREENSHOT', value: "${params.ENABLE_SCREENSHOT}"),  string(name: 'PUBLISH_REPORT_DIR', value: "${env.PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: "${params.REPORT_SHARE}"), booleanParam(name: 'DATA_SHARE', value: "${params.DATA_SHARE}"), string(name: 'PUBLISH_DATA_DIR', value: "${env.PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: "${RETRY_ENABLE}"), booleanParam(name: 'VIDEO_RECORDING', value: "${VIDEO_RECORDING}")]
+}
+
+def JBOSSRestart(JBOSS_HOST, JBOSS_INSTANCE ){
+    echo "JBOSS Restarting for -- ${JBOSS_HOST} and ${JBOSS_INSTANCE}"
+    build  propagate: false, job: 'REBOOT_JBOSS', parameters: [string(name: 'JBOSS_HOST', value: "${JBOSS_HOST}"), string(name: 'JBOSS_INSTANCE', value: "${JBOSS_INSTANCE}")]
+}
+
+def DatabaseReboot(DB_HOST, CDBNAME, PDBNAME, SERVICE_NAME ){
+    echo "CDBPDBReboot for ${DB_HOST} --- ${CDBNAME} --- ${PDBNAME} --- ${SERVICE_NAME}"
+    build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "${DB_HOST}"), string(name: 'CDBNAME', value: "${CDBNAME}"), string(name: 'PDBNAME', value: "${PDBNAME}"),string(name: 'SERVICE_NAME', value: "${SERVICE_NAME}")]
+}
+
+def DatabaseClone(SRC_DB_HOSTNAME, SRC_CDBNAME, SRC_PDBNAME, TARGET_DB_HOSTNAME, TARGET_CDBNAME, TARGET_PDBNAME, TARGET_OFM_HOSTNAME){
+    echo "DatabaseClone in Target --- ${TARGET_DB_HOSTNAME}- --- ${TARGET_CDBNAME} --- ${TARGET_PDBNAME} --- ${TARGET_OFM_HOSTNAME}"
+    build job: 'CDBPDBCLONE_ERM', parameters: [string(name: 'SRC_DB_HOSTNAME', value: "${SRC_DB_HOSTNAME}"),        string(name: 'SRC_CDBNAME', value: "${SRC_CDBNAME}"),   string(name: 'SRC_PDBNAME', value: "${SRC_PDBNAME}"),   string(name: 'TARGET_DB_HOSTNAME', value: "${TARGET_DB_HOSTNAME}"),         string(name: 'TARGET_CDBNAME', value: "${TARGET_CDBNAME}"), string(name: 'TARGET_PDBNAME', value: "${TARGET_PDBNAME}"), string(name: 'TARGET_OFM_HOSTNAME', value: "${TARGET_OFM_HOSTNAME}")]
+    
+}
+
+def BasicPreRequisite(NODE_NAME, TARGET_PDBNAME){
+    echo "Performing common pre-requesites CICD in Target NODE_NAME: ${NODE_NAME} --- ${TARGET_PDBNAME}"
+    build propagate: false,job: 'CICD_TestCase', parameters: [gitParameter(name: 'BRANCH_NAME', value: params.BRANCH_NAME), string(name: 'NODE_NAME', value: "${NODE_NAME}"), string(name: 'TEST_SCRIPT_NAME', value: 'LISA_Automation.xlsx'), string(name: 'RUN_MODE', value: '3'), string(name: 'TARGET_SUMMIT_ENV', value: "${TARGET_PDBNAME}"), string(name: 'CAPTURE_SCREENSHOTS', value: 'Y'), booleanParam(name: 'RETRY_ENABLE', value: true), booleanParam(name: 'VIDEO_RECORDING', value: false), booleanParam(name: 'LISA_AUTOMATION_SETUP', value: "true"), booleanParam(name: 'EQUIFAX_AUTOMATION_SETUP', value: "true"), booleanParam(name: 'EID_AUTOMATION_SETUP', value: "true"), booleanParam(name: 'HOPEWISER_AUTOMATION_SETUP', value: "true"), booleanParam(name: 'EXTERNAL_AFFORD_SETUP', value: "true"), booleanParam(name: 'QUEST_SETUP', value: "true"), booleanParam(name: 'AWE_SETUP', value: "true"), booleanParam(name: 'VIEW_DOCUMENT_SETUP', value: "true")]
+}
+
+pipeline {
+    agent none
+    environment {
+        PUBLISH_REPORT_DIR = "\\\\swinmssauto09.noid.in.ssg\\D\$\\Startup\\VM12_Jenkin_Shared_Report\\${env.BUILD_TAG}"
+        PUBLISH_DATA_DIR = "\\\\swinmssauto09.noid.in.ssg\\D\$\\Startup\\VM12_Jenkin_Shared_Data\\${env.BUILD_TAG}"
+    }
+    parameters {
+      string defaultValue: 'origin/Dev_Phase1', name: 'BRANCH_NAME', trim: true
+      string defaultValue: 'dlnxmssfobug02.noid.in.sopra', name: 'TARGET_DB_OFM_HOST', trim: true
+      string defaultValue: 'MRHAUT10', name: 'SRC_DB_CDB', trim: true
+      string defaultValue: 'MRHAUT10', name: 'SRC_DB_INSTANCE', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg' , name: 'SRC_DB_HOST', trim: true
+      
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_1', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_1', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_1', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_2', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_2', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_2', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_3', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_3', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_3', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_4', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_4', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_4', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_5', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_5', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_5', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_6', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_6', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_6', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_7', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_7', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_7', trim: true
+      
+      string defaultValue: 'CDBATQ4', name: 'TARGET_SUMMIT_CDB_8', trim: true
+      string defaultValue: 'MRHNAUT0', name: 'TARGET_SUMMIT_ENV_8', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg', name: 'TARGET_SUMMIT_HOST_8', trim: true
+      
+      choice choices: ['N', 'Y'], name: 'ENABLE_SCREENSHOT'
+      string defaultValue: 'manoj.agnihotri@soprabanking.com' , name: 'report_email_to', trim: true
+      string defaultValue: 'FullTestPlan' , name: 'report_subject_title', trim: true
+      string defaultValue: 'FullParallelPlan_1.csv' , name: 'PLAN_1', trim: true
+      string defaultValue: 'FullParallelPlan_2.csv' , name: 'PLAN_2', trim: true
+      string defaultValue: 'FullParallelPlan_3.csv' , name: 'PLAN_3', trim: true
+      string defaultValue: 'FullParallelPlan_Activate.csv' , name: 'PLAN_4', trim: true
+      string defaultValue: 'FullParallelPlan_LISA.csv' , name: 'PLAN_5', trim: true
+      string defaultValue: 'FullOthers_Sequential_1.csv' , name: 'PLAN_6', trim: true
+      string defaultValue: 'FullOthers_Sequential_2.csv' , name: 'PLAN_7', trim: true
+      string defaultValue: 'FullJobsPlan_1.csv' , name: 'PLAN_8', trim: true
+      string defaultValue: 'FullJobsPlan_2.csv' , name: 'PLAN_9', trim: true
+      string defaultValue: 'FullJobsPlan_3.csv' , name: 'PLAN_10', trim: true
+      string defaultValue: 'FullJobsPlan_4.csv' , name: 'PLAN_11', trim: true
+      string defaultValue: 'FullJobsPlan_5.csv' , name: 'PLAN_12', trim: true
+      
+      string defaultValue: '2' , name: 'RUN_MODE', trim: true
+      booleanParam(name: 'REPORT_SHARE', defaultValue: true, description: 'Share Report data to common location.')
+      booleanParam(name: 'DATA_SHARE', defaultValue: true, description: 'Share Data files to common location.')      
+      booleanParam(name: 'STAGE_SKIP_DB_RESTORE', defaultValue: false, description: 'Skip Database Restore Stage')
+      
+    }
+  stages {
+    stage('Common-DB-Clone') {
+        when{
+            expression { ! params.STAGE_SKIP_DB_RESTORE }
+        }
+        steps {
+            echo 'PDB Reboot for source database.'
+            DatabaseReboot(params.SRC_DB_HOST,params.SRC_DB_CDB,params.SRC_DB_INSTANCE,'PDB')
+            
+            echo 'PDB Reboot for all target databases.'
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_1,params.TARGET_SUMMIT_CDB_1,params.TARGET_SUMMIT_ENV_1,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_2,params.TARGET_SUMMIT_CDB_2,params.TARGET_SUMMIT_ENV_2,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_3,params.TARGET_SUMMIT_CDB_3,params.TARGET_SUMMIT_ENV_3,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_4,params.TARGET_SUMMIT_CDB_4,params.TARGET_SUMMIT_ENV_4,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_5,params.TARGET_SUMMIT_CDB_5,params.TARGET_SUMMIT_ENV_5,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_6,params.TARGET_SUMMIT_CDB_6,params.TARGET_SUMMIT_ENV_6,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_7,params.TARGET_SUMMIT_CDB_7,params.TARGET_SUMMIT_ENV_7,'PDB')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_8,params.TARGET_SUMMIT_CDB_8,params.TARGET_SUMMIT_ENV_8,'PDB')
+            
+            echo 'Database Restore - PDB Cloning.'
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_1, params.TARGET_SUMMIT_CDB_1, params.TARGET_SUMMIT_ENV_1, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_2, params.TARGET_SUMMIT_CDB_2, params.TARGET_SUMMIT_ENV_2, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_3, params.TARGET_SUMMIT_CDB_3, params.TARGET_SUMMIT_ENV_3, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_4, params.TARGET_SUMMIT_CDB_4, params.TARGET_SUMMIT_ENV_4, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_5, params.TARGET_SUMMIT_CDB_5, params.TARGET_SUMMIT_ENV_5, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_6, params.TARGET_SUMMIT_CDB_6, params.TARGET_SUMMIT_ENV_6, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_7, params.TARGET_SUMMIT_CDB_7, params.TARGET_SUMMIT_ENV_7, params.TARGET_DB_OFM_HOST)
+            DatabaseClone(params.SRC_DB_HOST, params.SRC_DB_CDB, params.SRC_DB_INSTANCE, params.TARGET_SUMMIT_HOST_8, params.TARGET_SUMMIT_CDB_8, params.TARGET_SUMMIT_ENV_8, params.TARGET_DB_OFM_HOST)
+            
+            echo 'TMD Reboot for all databases'
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_1,params.TARGET_SUMMIT_CDB_1,params.TARGET_SUMMIT_ENV_1,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_2,params.TARGET_SUMMIT_CDB_2,params.TARGET_SUMMIT_ENV_2,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_3,params.TARGET_SUMMIT_CDB_3,params.TARGET_SUMMIT_ENV_3,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_4,params.TARGET_SUMMIT_CDB_4,params.TARGET_SUMMIT_ENV_4,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_5,params.TARGET_SUMMIT_CDB_5,params.TARGET_SUMMIT_ENV_5,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_6,params.TARGET_SUMMIT_CDB_6,params.TARGET_SUMMIT_ENV_6,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_7,params.TARGET_SUMMIT_CDB_7,params.TARGET_SUMMIT_ENV_7,'TMD')
+            DatabaseReboot(params.TARGET_SUMMIT_HOST_8,params.TARGET_SUMMIT_CDB_8,params.TARGET_SUMMIT_ENV_8,'TMD')
+        }
+        
+    }
+    stage('Common-PreRequisite') {
+        steps {
+            echo 'Perform common steps for Parallel Plans so that they can be launched at the same time'
+            JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC10')
+            BasicPreRequisite('AUT09_MSS-ATEST00',params.TARGET_SUMMIT_ENV_1);
+        }
+        
+    }
+    stage('Prepare-And-Test') {
+      parallel {
+        stage('Test_Plan_01') {
+          stages {
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_1,'AUT09_MSS-ATEST00',params.TARGET_SUMMIT_ENV_1,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_02') {
+          stages {
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_2,'AUT09_MSS-ATEST01',params.TARGET_SUMMIT_ENV_1,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_03') {
+          stages {
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_3,'AUT09_MSS-ATEST02',params.TARGET_SUMMIT_ENV_1,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_04') {
+          stages {
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_4,'AUT15_MSS-ATEST03',params.TARGET_SUMMIT_ENV_1,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_05') {
+          stages {
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_5,'AUT14_MSS-ATEST04',params.TARGET_SUMMIT_ENV_1,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_06') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC11')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT09_MSS-ATEST05',params.TARGET_SUMMIT_ENV_2);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_6,'AUT09_MSS-ATEST05',params.TARGET_SUMMIT_ENV_2,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_07') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC12')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT14_MSS-ATEST02',params.TARGET_SUMMIT_ENV_3);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_7,'AUT14_MSS-ATEST02',params.TARGET_SUMMIT_ENV_3,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_08') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC13')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT14_MSS-ATEST00',params.TARGET_SUMMIT_ENV_4);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_8,'AUT14_MSS-ATEST00',params.TARGET_SUMMIT_ENV_4,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_0s9') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC17')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT14_MSS-ATEST01',params.TARGET_SUMMIT_ENV_5);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_9,'AUT14_MSS-ATEST01',params.TARGET_SUMMIT_ENV_5,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_10') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC18')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT14_MSS-ATEST03',params.TARGET_SUMMIT_ENV_6);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_10,'AUT14_MSS-ATEST03',params.TARGET_SUMMIT_ENV_6,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_11') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss5eap01.noid.in.ssg','EC19')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT09_MSS-ATEST03',params.TARGET_SUMMIT_ENV_7);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_11,'AUT09_MSS-ATEST03',params.TARGET_SUMMIT_ENV_7,'false','true')
+              }
+            }
+          }
+        }
+        stage('Test_Plan_12') {
+          stages {
+            stage('JBOSS_Restart') {
+              steps {
+                JBOSSRestart('dlnxmss56eap01.noid.in.ssg','EC13')
+              }
+            }
+            stage('Basic_PreReq') {
+              steps {
+                BasicPreRequisite('AUT15_MSS-ATEST04',params.TARGET_SUMMIT_ENV_8);
+              }
+            }
+            stage('TestPlanLauncher') {
+              steps {
+                TestPlanLauncher(params.PLAN_12,'AUT15_MSS-ATEST04',params.TARGET_SUMMIT_ENV_8,'false','true')
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  post {
+        always {
+            build job: 'ReportGenerate', parameters: [string(name: 'report_recipents', value: "$report_email_to"), string(name: 'QUICK_DISPLAY_URL', value: "${env.BUILD_URL}"), string(name: 'email_subject_title', value: "$report_subject_title"), string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}")]
+        }
+    }
+}

@@ -1,0 +1,2 @@
+FOR_CUR_RISK	Forign Currency Risk Details		0	N	Y	A
+00001	WINDOW		'W_FOREIGN_CURRENCY_RISK_DETAILS','',''	Foreign Currency Risk Details

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="RequestValuationMockService" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="a57fa4a0-3290-4e9c-aa3e-4fe5e24f882c" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ServiceFDSoap" type="wsdl" bindingName="{http://feed.server115.net}ServiceFDSoap" soapVersion="1_1" anonymous="optional" definition="file:/d:/Profiles/tsinghal/Desktop/MSD-3664/v0.9%20amended%20schemas/Interface.wsdl" id="be19e804-5104-4904-8ca9-a8af6d9f9d4e" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\d:\Profiles\tsinghal\Desktop\MSD-3664\v0.9%20amended%20schemas\Interface.wsdl"><con:part><con:url>file:\d:\Profiles\tsinghal\Desktop\MSD-3664\v0.9%20amended%20schemas\Interface.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://feed.server115.net" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://feed.server115.net" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://feed.server115.net">
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendMessageResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage"/>
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ServiceFDSoap">
+    <wsdl:operation name="SendMessage">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Send XML message</documentation>
+      <wsdl:input message="tns:SendMessageSoapIn"/>
+      <wsdl:output message="tns:SendMessageSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceFDSoap" type="tns:ServiceFDSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="/SendMessage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceFD">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/"/>
+    <wsdl:port name="ServiceFDSoap" binding="tns:ServiceFDSoap">
+      <soap:address location="https://feed.server115.net/lkjuy7uzz??????????+9EX32P6eLut737hs98m4nd7kt43e7rh+xsid343507"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://ITEM-70518:8088/QuestService</con:endpoint><con:endpoint>https://feed.server115.net/lkjuy7uzz?????????? 9EX32P6eLut737hs98m4nd7kt43e7rh xsid343507</con:endpoint></con:endpoints><con:operation isOneWay="false" action="/SendMessage" name="SendMessage" bindingOperationName="SendMessage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="ef8bf04e-3133-47a2-9d57-06f376ed3457"><con:settings/><con:call name="Request 1" id="8c3460bf-3237-4f9c-92ab-c868650efd0d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.84.164.200:8091/QuestService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:feed="http://feed.server115.net">
+   <soapenv:Body>
+      <feed:SendMessage>
+         <qstInstruction>
+            <InstructionDetails>
+               <InstructionSource/>
+               <InstructionSourceTelephone/>
+               <InstructionSourceFax/>
+               <InstructionSourceDX/>
+               <TypeOfInstruction/>
+               <InstructionControl/>
+               <PanelSPN/>
+            </InstructionDetails>
+            <LenderDetails>
+               <LenderIfDifferent/>
+               <LenderReference/>
+               <LenderBranch/>
+               <LenderBranchTelephone/>
+               <LenderStaff/>
+               <LenderStaffTelephone/>
+               <AdvanceAmount>0</AdvanceAmount>
+               <GrossFee>0.0</GrossFee>
+               <ReturnAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </ReturnAddress>
+            </LenderDetails>
+            <PropertyDetails>
+               <PriceOfProperty>0</PriceOfProperty>
+               <PurchasePriceOrEstimatedValue/>
+               <OccupierName>
+                  <Title/>
+                  <Initials/>
+                  <Surname/>
+               </OccupierName>
+               <PropertyAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </PropertyAddress>
+               <PropertyTelDay/>
+               <PropertyTelEve/>
+               <PropertyType>
+                  <Type/>
+                  <Style/>
+                  <Bedrooms>0</Bedrooms>
+                  <NewBuild>false</NewBuild>
+                  <ListedBuilding>false</ListedBuilding>
+                  <Floor>0</Floor>
+               </PropertyType>
+            </PropertyDetails>
+            <ApplicantDetails>
+               <Applicant1>
+                  <Title/>
+                  <Initials/>
+                  <Surname>
+Msd-4290 Scenario2</Surname>
+
+               </Applicant1>
+               <Applicant2>
+                  <Title/>
+                  <Initials/>
+                  <Surname/>
+               </Applicant2>
+               <ApplicantAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </ApplicantAddress>
+               <ApplicantTelDay/>
+               <ApplicantTelEve/>
+            </ApplicantDetails>
+            <AgentDetails>
+               <Agent/>
+               <AgentTel/>
+            </AgentDetails>
+            <OtherInformation>
+               <Access/>
+               <InstructionNote1/>
+               <InstructionNote2/>
+            </OtherInformation>
+         </qstInstruction>
+      </feed:SendMessage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/><con:wsrmConfig version="1.2"/></con:call><con:call id="b8208182-0998-4b77-9060-6b2cc0ba1a92" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.84.164.200:8091/QuestService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:feed="http://feed.server115.net">
+   <soapenv:Body>
+      <feed:SendMessage>
+         <qstInstruction>
+            <InstructionDetails>
+               <InstructionSource/>
+               <InstructionSourceTelephone/>
+               <InstructionSourceFax/>
+               <InstructionSourceDX/>
+               <TypeOfInstruction/>
+               <InstructionControl/>
+               <PanelSPN/>
+            </InstructionDetails>
+            <LenderDetails>
+               <LenderIfDifferent/>
+               <LenderReference/>
+               <LenderBranch/>
+               <LenderBranchTelephone/>
+               <LenderStaff/>
+               <LenderStaffTelephone/>
+               <AdvanceAmount>0</AdvanceAmount>
+               <GrossFee>0.0</GrossFee>
+               <ReturnAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </ReturnAddress>
+            </LenderDetails>
+            <PropertyDetails>
+               <PriceOfProperty>0</PriceOfProperty>
+               <PurchasePriceOrEstimatedValue/>
+               <OccupierName>
+                  <Title/>
+                  <Initials/>
+                  <Surname/>
+               </OccupierName>
+               <PropertyAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </PropertyAddress>
+               <PropertyTelDay/>
+               <PropertyTelEve/>
+               <PropertyType>
+                  <Type/>
+                  <Style/>
+                  <Bedrooms>0</Bedrooms>
+                  <NewBuild>false</NewBuild>
+                  <ListedBuilding>false</ListedBuilding>
+                  <Floor>0</Floor>
+               </PropertyType>
+            </PropertyDetails>
+            <ApplicantDetails>
+               <Applicant1>
+                  <Title/>
+                  <Initials/>
+                  <Surname>
+Msd-4290 Scenario2</Surname>
+               </Applicant1>
+               <Applicant2>
+                  <Title/>
+                  <Initials/>
+                  <Surname/>
+               </Applicant2>
+               <ApplicantAddress>
+                  <HouseName/>
+                  <RoadNumber/>
+                  <RoadName/>
+                  <Area/>
+                  <Town/>
+                  <County/>
+                  <PostCode/>
+               </ApplicantAddress>
+               <ApplicantTelDay/>
+               <ApplicantTelEve/>
+            </ApplicantDetails>
+            <AgentDetails>
+               <Agent/>
+               <AgentTel/>
+            </AgentDetails>
+            <OtherInformation>
+               <Access/>
+               <InstructionNote1/>
+               <InstructionNote2/>
+            </OtherInformation>
+         </qstInstruction>
+      </feed:SendMessage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="9090" path="/QuestService" host="swinmssauto09.noid.in.ssg" name="ServiceFDSoap MockService" bindToHostOnly="false" docroot="" id="d5fb8356-26f0-45c1-b195-a174e3dfc684"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="SendMessage" interface="ServiceFDSoap" operation="SendMessage" id="4040409b-662a-4cae-aa1b-335cb08b99e6"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>MSD-4290 Scenario1</con:defaultResponse><con:dispatchPath>def req = new XmlSlurper().parseText(mockRequest.requestContent).declareNamespace('SOAP-ENV': 'http://schemas.xmlsoap.org/soap/envelope/')
+
+context.surname = req.'SOAP-ENV:Body'.SendMessage.qstInstruction.ApplicantDetails.Applicant1.Surname;
+
+if(context.surname=='Msd-4290 Scenario1'){
+ return "MSD-4290 Scenario1";
+}
+else if(context.surname=='Msd-4290 Scenario2'){
+	return "MSD-4290 Scenario2";
+}
+else if(context.surname=='Msd-4290 Scenario3'){
+	return "MSD-4290 Scenario3";
+}
+else if(context.surname=="Msd-4290 Scenario4")
+{
+	return "MSD-4290 Scenario4";
+}
+else if(context.surname=="Msd-4292 Scenario1")
+{
+	return "Msd-4292 Scenario1";
+}
+else if(context.surname=="Msd-4292 Scenario2")
+{
+	return "Msd-4292 Scenario2";
+}
+else if(context.surname=="Msd-4292 Scenario3")
+{
+	return "Msd-4292 Scenario3";
+}
+else if(context.surname=="Msd-4292 Scenario4")
+{
+	return "Msd-4292 Scenario4";
+}
+</con:dispatchPath><con:response name="MSD-4290 Scenario1" encoding="UTF-8" httpResponseStatus="200" id="b6ed49e9-0c00-40f3-99af-1d602ef94067"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>&lt;qstInstructionResponse&gt;
+&lt;Result&gt;Accepted&lt;/Result&gt;
+&lt;Comment&gt;6N382661&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="MSD-4290 Scenario2" httpResponseStatus="200" encoding="UTF-8" id="fb17835c-780d-4556-aed5-9243943260b2"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>&lt;qstInstructionResponse&gt;
+&lt;Result&gt;Accepted&lt;/Result&gt;
+&lt;Comment&gt;&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="MSD-4290 Scenario3" httpResponseStatus="200" encoding="UTF-8" id="68700a97-9cf6-4db9-b69d-d76127022c70"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+&lt;qstInstructionResponse&gt;
+&lt;Result&gt;Duplicate&lt;/Result&gt;
+&lt;Comment&gt;&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="MSD-4290 Scenario4" httpResponseStatus="200" encoding="UTF-8" id="7f577181-a554-4f02-b0af-0c7e962cf854"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+         &lt;qstInstructionResponse&gt;
+&lt;Result&gt;Duplicate&lt;/Result&gt;
+&lt;Comment&gt;6N380777&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Msd-4292 Scenario1" httpResponseStatus="200" encoding="UTF-8" id="506ff7ea-59a3-4f45-af0d-658798807b38"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+         &lt;qstInstructionResponse&gt;
+&lt;Result&gt;Error&lt;/Result&gt;
+&lt;Comment&gt;Error ABC123&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Msd-4292 Scenario2" httpResponseStatus="200" encoding="UTF-8" id="1f6fdea0-3495-451e-b7b2-0814ae4ceee9"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+         
+         &lt;qstInstructionResponse&gt;
+&lt;Result&gt;Error&lt;/Result&gt;
+&lt;Comment&gt;&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Msd-4292 Scenario3" httpResponseStatus="200" encoding="UTF-8" id="ef3414b0-7919-411d-bfa5-9c4b1c27b4fa"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+         &lt;qstInstructionResponse&gt;
+&lt;Result&gt;Invalid&lt;/Result&gt;
+&lt;Comment&gt;&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+</SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Msd-4292 Scenario4" httpResponseStatus="200" encoding="UTF-8" id="e92ccc3c-9b0f-4471-acf6-cdd2a672b24c"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <SendMessageResponse xmlns="http://feed.server115.net">
+         <SendMessageResult>
+         &lt;qstInstructionResponse&gt;
+&lt;Result&gt;Invalid&lt;/Result&gt;
+&lt;Comment&gt;error DEF123&lt;/Comment&gt;
+&lt;/qstInstructionResponse&gt;
+ </SendMessageResult>
+      </SendMessageResponse>
+   </soap:Body>
+</soap:Envelope>
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Default" id="4f5c5901-184f-4d7c-a4fd-d8a5a135fdbf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <SendMessageResponse xmlns="http://feed.server115.net">
+      <SendMessageResult>
+		&lt;qstInstructionResponse&gt;
+		&lt;Result&gt;Accepted&lt;/Result&gt;
+		&lt;Comment&gt;6N382605&lt;/Comment&gt;
+		&lt;/qstInstructionResponse&gt;
+      </SendMessageResult>
+    </SendMessageResponse>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Error" id="d67b58e4-e3ac-44bf-8b6c-a20de0a90480" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <SendMessageResponse xmlns="http://feed.server115.net">
+      <SendMessageResult>
+		&lt;qstInstructionResponse&gt;
+		&lt;Result&gt;Error&lt;/Result&gt;
+		&lt;Comment&gt;Error ABC123&lt;/Comment&gt;
+		&lt;/qstInstructionResponse&gt;
+      </SendMessageResult>
+    </SendMessageResponse>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:response name="Invalid" id="9f9405c6-1289-4d24-8275-cdca2b97051e" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <SendMessageResponse xmlns="http://feed.server115.net">
+      <SendMessageResult>
+		&lt;qstInstructionResponse&gt;
+		&lt;Result&gt;Invalid&lt;/Result&gt;
+		&lt;Comment&gt;&lt;/Comment&gt;
+		&lt;/qstInstructionResponse&gt;
+      </SendMessageResult>
+    </SendMessageResponse>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="/SendMessage"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

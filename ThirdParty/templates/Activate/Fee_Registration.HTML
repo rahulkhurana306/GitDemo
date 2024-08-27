@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="generator" content="HTML Tidy for Windows (vers 1 June 2005), see www.w3.org">
+<meta http-equiv="Content-Language" content="en-au">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Fees Registration Page</title>
+<script language="JavaScript" type="text/javascript">
+<!--
+var url = window.location;
+openPage = function() {
+location.href = "Registration_Completed.html?Key="+url;
+}
+function myFunction()
+{
+var x=5;
+return x;
+}
+function myfunction(y)
+{
+var x="A14";
+return x + y;
+}
+function cancelprocessing()
+{
+var x="Cancelled";
+alert("Running javascript function 'cancelprocessing()'");
+return x
+}
+function MyFunction()
+{
+var x=6;
+return x;
+}
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+<script language="JavaScript" type="text/javascript">
+   
+      <!-- Begin
+function getParams() {
+  var idx = document.URL.indexOf('?');
+  if (idx != -1) {
+    var tempParams = new Object();
+    var pairs = document.URL.substring(idx+1,document.URL.length).split('&');
+    for (var i=0; i<pairs.length; i++) {
+      nameVal = pairs[i].split('=');
+      tempParams[nameVal[0]] = nameVal[1];
+    }
+    return tempParams;
+  }
+}
+
+var params = getParams();
+        
+      //  End -->            
+</script>
+</head>
+<body>
+
+<BODY TOPMMARGIN=5>
+<BODY LEFTMARGIN=60>
+RBS Fee Registration Webpage
+<form method="post" name="myForm" action="" id="myForm">
+<pre>
+<B>
+<br>Fee Registration Reference:           <input type="text" name="FeeRegistrationReference" /> New Reference:           <input type="text" name="NewReference" /> </br>
+<br>Enable ThirdParty Cards :             <input type="text" name="EnableThirdPartyCards" /></br> 
+<br>Enable other Cards :             <input type="text" name="EnableOtherCards" /></br> 
+<br>Update (Set to Either true or False): <input type="text" name="Update" /></br >
+</pre></B>
+<!--br><a href="Registration Completed.html">Next</a-->  
+<!--br><a href ="Registration Completed.html & Key= url" >Next</a-->
+<!--br><a href="'+url+'"' +'id="Registration Completed.html">Next</a-->
+<a href = "javascript:openPage()">Next</a>
+</br>
+<p><b>Note:</b> This is the Dummy webpage .Values in the respective field will get filled by Activate</p>
+
+<p><b>Note:</b> This is the Dummy webpage .adding text to check for vertical scrollbar. </p>
+<p><b>Note:</b> This is the Dummy webpage .adding more and more text .</p>
+
+
+<p id="para1">Some text here</p>
+</form>
+<script language="JavaScript" type="text/javascript">
+   
+      <!-- Begin
+        pvName = unescape(params["FeeRegistrationReference"]);
+          if (pvName) document.myForm.FeeRegistrationReference.value = pvName;            
+
+        pvName = unescape(params["EnableThirdPartyCards"]);
+        if (pvName) document.myForm.EnableThirdPartyCards.value = pvName;
+		
+		pvName = unescape(params["Update"]);
+        if (pvName) document.myForm.Update.value = pvName;
+      //  End -->
+
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+KFAPPGENDETS	Keyword Frameworkd Macro		0	N	Y	A
+00001	DECLARE		THERE	
+00002	WINDOW		'W_AP010_00','',''	Register Application
+00003	COMMENT		Check to see if task is already present for Further Advance	
+00004	IF		$APPTYPE = 'F',FADV	
+00005	TASK		'000','O'	General Notes
+00006	JUMP		Next	
+00007	SELECT	FADV	'COUNT(*) INTO :THERE FROM OPEN_TASKS M WHERE M.MORTGAGE = :$MORTGAGE AND M.APPLSEQ = :$APPLSEQ AND M.PROGPNT = '000''	
+00008	SKIPIF		THERE > 0	
+00009	TASK		'000','AO'	General Notes
+00010	JUMP		Next	
+00011	WINDOW	Next	'W_AP010_01_09','',''	Initial Disclsoure Details
+00012	COMMIT			
+00013	WINDOW		'W_AP010_01_04','',''	Level of Service Details
+00014	COMMIT			

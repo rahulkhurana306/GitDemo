@@ -1,0 +1,156 @@
+pipeline {
+    agent none
+    environment {
+        PUBLISH_REPORT_DIR = "\\\\swinmssauto09.noid.in.ssg\\D\$\\Startup\\VM12_Jenkin_Shared_Report\\${env.BUILD_TAG}"
+        PUBLISH_DATA_DIR = "\\\\swinmssauto09.noid.in.ssg\\D\$\\Startup\\VM12_Jenkin_Shared_Data\\${env.BUILD_TAG}"
+    }
+    parameters {
+      string defaultValue: 'origin/Dev_Phase1', name: 'BRANCH_NAME', trim: true
+      string defaultValue: 'MRHAUT10', name: 'SRC_DB_INSTANCE', trim: true
+      string defaultValue: 'MRHAUT13', name: 'TARGET_SUMMIT_ENV', trim: true
+      string defaultValue: 'BRHAUT19', name: 'BACKUP_DB_INSTANCE', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg' , name: 'SRC_DB_HOST', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg' , name: 'TARGET_DB_HOST', trim: true
+      string defaultValue: 'dlnxmssautodb02.noid.in.ssg' , name: 'BACKUP_DB_HOST', trim: true
+      string defaultValue: 'CDBATQ3' , name: 'SRC_DB_CDB', trim: true
+      string defaultValue: 'CDBATQ4' , name: 'TARGET_DB_CDB', trim: true
+      string defaultValue: 'CDBATQ2' , name: 'BACKUP_DB_CDB', trim: true
+      string defaultValue: 'dlnxmssfobug02.noid.in.sopra' , name: 'TARGET_DB_OFM_HOST', trim: true
+      choice choices: ['N', 'Y'], name: 'ENABLE_SCREENSHOT'
+      string defaultValue: 'manoj.agnihotri@soprabanking.com' , name: 'report_email_to', trim: true
+      string defaultValue: 'FullTestPlan' , name: 'report_subject_title', trim: true
+      string defaultValue: 'FullParallelPlan_1.csv' , name: 'PARA_P1', trim: true
+      string defaultValue: 'FullParallelPlan_2.csv' , name: 'PARA_P2', trim: true
+      string defaultValue: 'FullParallelPlan_3.csv' , name: 'PARA_P3', trim: true
+      string defaultValue: 'FullParallelPlan_Activate.csv' , name: 'PARA_P4', trim: true
+      string defaultValue: 'FullParallelPlan_LISA.csv' , name: 'PARA_P5', trim: true
+      string defaultValue: 'FullOthers_Sequential_1.csv' , name: 'PARA_P6', trim: true
+      string defaultValue: 'FullParallelPlan_5.csv' , name: 'PARA_P7', trim: true
+      string defaultValue: 'FullParallelPlan_6.csv' , name: 'PARA_P8', trim: true
+      string defaultValue: 'FullJobsPlan_1.csv' , name: 'PARA_P9', trim: true
+      string defaultValue: 'FullJobsPlan_2.csv' , name: 'PARA_P10', trim: true
+      string defaultValue: 'FullJobsPlan_3.csv' , name: 'PARA_P11', trim: true
+      string defaultValue: '1' , name: 'RUN_MODE', trim: true
+      booleanParam(name: 'STAGE_SKIP_DB_RESTORE', defaultValue: false, description: 'Skip Database Restore Stage')
+      
+    }
+    stages {
+        stage('Report Cleanup') {
+            agent { label 'mss_auto_service' }
+            steps {
+                bat 'del  /S /Q %PUBLISH_REPORT_DIR%'
+                echo "Report Cleanup Complete"
+            }
+        }
+        
+        stage('DB-Restore-Before-PreRequsities') {
+            when {
+                expression { ! params.STAGE_SKIP_DB_RESTORE }
+            }
+            steps {
+                echo "Step for Database Restore"
+                build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "$SRC_DB_HOST"), string(name: 'CDBNAME', value: "$SRC_DB_CDB"), string(name: 'PDBNAME', value: "$SRC_DB_INSTANCE"),string(name: 'SERVICE_NAME', value: "PDB")]
+                build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "$TARGET_DB_HOST"), string(name: 'CDBNAME', value: "$TARGET_DB_CDB"), string(name: 'PDBNAME', value: "$TARGET_SUMMIT_ENV"),string(name: 'SERVICE_NAME', value: "PDB")]
+                build job: 'CDBPDBCLONE', parameters: [string(name: 'SRC_DB_HOSTNAME', value: "$SRC_DB_HOST"), string(name: 'SRC_CDBNAME', value: "$SRC_DB_CDB"), string(name: 'SRC_PDBNAME', value: "$SRC_DB_INSTANCE"), string(name: 'TARGET_DB_HOSTNAME', value: "$TARGET_DB_HOST"), string(name: 'TARGET_CDBNAME', value: "$TARGET_DB_CDB"), string(name: 'TARGET_PDBNAME', value: "$TARGET_SUMMIT_ENV"), string(name: 'TARGET_OFM_HOSTNAME', value: "$TARGET_DB_OFM_HOST"), booleanParam(name: 'LISA_AUTOMATION_SETUP', value: true), booleanParam(name: 'EQUIFAX_AUTOMATION_SETUP', value: true), booleanParam(name: 'EID_AUTOMATION_SETUP', value: true), booleanParam(name: 'HOPEWISER_AUTOMATION_SETUP', value: true), booleanParam(name: 'EXTERNAL_AFFORD_SETUP', value: true), booleanParam(name: 'QUEST_SETUP', value: true), booleanParam(name: 'AWE_SETUP', value: true), booleanParam(name: 'VIEW_DOCUMENT_SETUP', value: true)]
+                echo "Restart TMD on $TARGET_DB_HOST --> $TARGET_DB_CDB --> $TARGET_SUMMIT_ENV"
+                build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "$TARGET_DB_HOST"), string(name: 'CDBNAME', value: "$TARGET_DB_CDB"), string(name: 'PDBNAME', value: "$TARGET_SUMMIT_ENV"),string(name: 'SERVICE_NAME', value: "TMD")]
+            }
+        }
+        stage('Run in Parallel') {
+            parallel {
+                stage('Parallel_01') {
+                    steps {
+                        echo "Step for Parallel_01"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P1"),string (name: 'NODE_NAME', value: 'AUT09_MSS-ATEST01'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"),  string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                    
+                }
+                stage('Parallel_02') {
+                    steps {
+                        echo "Step for Parallel_02"
+                        build  propagate: false, job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P2"),string (name: 'NODE_NAME', value: 'AUT09_MSS-ATEST02'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_03') {
+                    steps {
+                        echo "Step for Parallel_03"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P3"),string (name: 'NODE_NAME', value: 'AUT15_MSS-ATEST03'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_04') {
+                    steps {
+                        echo "Step for Parallel_04"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P4"),string (name: 'NODE_NAME', value: 'AUT15_MSS-ATEST04'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_05') {
+                    steps {
+                        echo "Step for Parallel_05"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P5"),string (name: 'NODE_NAME', value: 'AUT09_MSS-ATEST05'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_06') {
+                    steps {
+                        echo "Step for Parallel_06"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P6"),string (name: 'NODE_NAME', value: 'AUT15_MSS-ATEST00'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_07') {
+                    steps {
+                        echo "Step for Parallel_07"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P7"),string (name: 'NODE_NAME', value: 'AUT14_MSS-ATEST01'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_08') {
+                    steps {
+                        echo "Step for Parallel_08"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P8"),string (name: 'NODE_NAME', value: 'AUT14_MSS-ATEST02'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_09') {
+                    steps {
+                        echo "Step for Parallel_09"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P9"),string (name: 'NODE_NAME', value: 'AUT14_MSS-ATEST03'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_10') {
+                    steps {
+                        echo "Step for Parallel_10"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P10"),string (name: 'NODE_NAME', value: 'AUT14_MSS-ATEST04'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                stage('Parallel_11') {
+                    steps {
+                        echo "Step for Parallel_11"
+                        build  propagate: false,job: 'Test_Plan_Launcher', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'TEST_PLAN_NAME', value: "$PARA_P11"),string (name: 'NODE_NAME', value: 'AUT14_MSS-ATEST05'), string(name: 'TARGET_SUMMIT_ENV', value: "$TARGET_SUMMIT_ENV"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'ENABLE_SCREENSHOT', value: "$ENABLE_SCREENSHOT"),  string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}") , booleanParam(name: 'REPORT_SHARE', value: true), booleanParam(name: 'DATA_SHARE', value: true), string(name: 'PUBLISH_DATA_DIR', value: "${PUBLISH_DATA_DIR}"), booleanParam(name: 'RETRY_ENABLE', value: true)]
+                    }
+                }
+                
+                }//end parallel
+            }//end parallel-stage
+            
+            stage('GitPush') {
+                    steps {
+                        echo "Step for Committing Data files"
+                        build  propagate: false,job: 'GitPush', parameters: [gitParameter(name: 'BRANCH_NAME', value: "$BRANCH_NAME"), string(name: 'RUN_MODE', value: "$RUN_MODE"), string(name: 'JENKIN_SHARED_DATA', value: "${PUBLISH_DATA_DIR}"), string(name: 'GIT_TARGET_BRANCH', value: "${env.BUILD_TAG}")]
+                    }
+            }
+            
+            stage('Database Backup') {
+                    steps {
+                        echo "Step for Backuping up database"
+                        echo "Step for Database Restore"
+                        build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "$TARGET_DB_HOST"), string(name: 'CDBNAME', value: "$TARGET_DB_CDB"), string(name: 'PDBNAME', value: "$TARGET_SUMMIT_ENV")]
+                        build job: 'CDB_PDB_REBOOT', parameters: [string(name: 'DB_HOST', value: "$BACKUP_DB_HOST"), string(name: 'CDBNAME', value: "$BACKUP_DB_CDB"), string(name: 'PDBNAME', value: "$BACKUP_DB_INSTANCE")]
+                        build job: 'CDBPDBCLONE_ERM', parameters: [string(name: 'SRC_DB_HOSTNAME', value: "$TARGET_DB_HOST"), string(name: 'SRC_CDBNAME', value: "$TARGET_DB_CDB"), string(name: 'SRC_PDBNAME', value: "$TARGET_SUMMIT_ENV"), string(name: 'TARGET_DB_HOSTNAME', value: "$BACKUP_DB_HOST"), string(name: 'TARGET_CDBNAME', value: "$BACKUP_DB_CDB"), string(name: 'TARGET_PDBNAME', value: "$BACKUP_DB_INSTANCE"), string(name: 'TARGET_OFM_HOSTNAME', value: "$TARGET_DB_OFM_HOST")]
+                    }
+            }
+        }
+            
+        
+        post {
+            always {
+                build job: 'ReportGenerate', parameters: [string(name: 'report_recipents', value: "$report_email_to"), string(name: 'QUICK_DISPLAY_URL', value: "${env.BUILD_URL}"), string(name: 'email_subject_title', value: "$report_subject_title"), string(name: 'PUBLISH_REPORT_DIR', value: "${PUBLISH_REPORT_DIR}")]
+            }
+        }
+}

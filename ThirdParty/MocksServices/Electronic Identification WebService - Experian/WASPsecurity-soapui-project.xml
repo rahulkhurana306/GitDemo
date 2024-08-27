@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="WASPsecurity" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="98752a31-d7ab-4aac-959f-eae3c33e8d44" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="TokenServiceSoap" type="wsdl" bindingName="{http://www.uk.experian.com/WASP/}TokenServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:\D:\Profiles\vGayes\DCR-723\WASPsecurity.wsdl" id="82e5c91e-9b05-4c20-9e3f-77e526a42d36" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/Profiles/vGayes/Documents/SOAP%20UI/DCR-723%20CSR5.0/WASPsecurity.wsdl"><con:part><con:url>file:/D:/Profiles/vGayes/Documents/SOAP%20UI/DCR-723%20CSR5.0/WASPsecurity.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.uk.experian.com/WASP/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.uk.experian.com/WASP/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.uk.experian.com/WASP/">
+      <s:element name="STS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authenticationBlock" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithCertificate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="application" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="checkIP" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithCertificateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginWithCertificateResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithUsernamePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="application" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="checkIP" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginWithUsernamePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginWithUsernamePasswordResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="STSSoapIn">
+    <wsdl:part name="parameters" element="tns:STS"/>
+  </wsdl:message>
+  <wsdl:message name="STSSoapOut">
+    <wsdl:part name="parameters" element="tns:STSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginWithCertificate"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginWithCertificateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginWithUsernamePassword"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginWithUsernamePasswordResponse"/>
+  </wsdl:message>
+  <wsdl:message name="STSHttpGetIn">
+    <wsdl:part name="authenticationBlock" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="STSHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateHttpGetIn">
+    <wsdl:part name="application" type="s:string"/>
+    <wsdl:part name="checkIP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordHttpGetIn">
+    <wsdl:part name="application" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="checkIP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="STSHttpPostIn">
+    <wsdl:part name="authenticationBlock" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="STSHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateHttpPostIn">
+    <wsdl:part name="application" type="s:string"/>
+    <wsdl:part name="checkIP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithCertificateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordHttpPostIn">
+    <wsdl:part name="application" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="checkIP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginWithUsernamePasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:portType name="TokenServiceSoap">
+    <wsdl:operation name="STS">
+      <wsdl:input message="tns:STSSoapIn"/>
+      <wsdl:output message="tns:STSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <wsdl:input message="tns:LoginWithCertificateSoapIn"/>
+      <wsdl:output message="tns:LoginWithCertificateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <wsdl:input message="tns:LoginWithUsernamePasswordSoapIn"/>
+      <wsdl:output message="tns:LoginWithUsernamePasswordSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TokenServiceHttpGet">
+    <wsdl:operation name="STS">
+      <wsdl:input message="tns:STSHttpGetIn"/>
+      <wsdl:output message="tns:STSHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <wsdl:input message="tns:LoginWithCertificateHttpGetIn"/>
+      <wsdl:output message="tns:LoginWithCertificateHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <wsdl:input message="tns:LoginWithUsernamePasswordHttpGetIn"/>
+      <wsdl:output message="tns:LoginWithUsernamePasswordHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TokenServiceHttpPost">
+    <wsdl:operation name="STS">
+      <wsdl:input message="tns:STSHttpPostIn"/>
+      <wsdl:output message="tns:STSHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <wsdl:input message="tns:LoginWithCertificateHttpPostIn"/>
+      <wsdl:output message="tns:LoginWithCertificateHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <wsdl:input message="tns:LoginWithUsernamePasswordHttpPostIn"/>
+      <wsdl:output message="tns:LoginWithUsernamePasswordHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TokenServiceSoap" type="tns:TokenServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="STS">
+      <soap:operation soapAction="http://www.uk.experian.com/WASP/STS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <soap:operation soapAction="http://www.uk.experian.com/WASP/LoginWithCertificate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <soap:operation soapAction="http://www.uk.experian.com/WASP/LoginWithUsernamePassword" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TokenServiceHttpGet" type="tns:TokenServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="STS">
+      <http:operation location="/STS"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <http:operation location="/LoginWithCertificate"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <http:operation location="/LoginWithUsernamePassword"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TokenServiceHttpPost" type="tns:TokenServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="STS">
+      <http:operation location="/STS"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithCertificate">
+      <http:operation location="/LoginWithCertificate"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithUsernamePassword">
+      <http:operation location="/LoginWithUsernamePassword"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TokenService">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Experian Token Service</documentation>
+    <wsdl:port name="TokenServiceSoap" binding="tns:TokenServiceSoap">
+      <soap:address location="https://secure.wasp.uat.uk.experian.com/WASPAuthenticator/tokenService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TokenServiceHttpGet" binding="tns:TokenServiceHttpGet">
+      <http:address location="https://secure.wasp.uat.uk.experian.com/WASPAuthenticator/tokenService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TokenServiceHttpPost" binding="tns:TokenServiceHttpPost">
+      <http:address location="https://secure.wasp.uat.uk.experian.com/WASPAuthenticator/tokenService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://www.uk.experian.com/WASP/LoginWithCertificate" name="LoginWithCertificate" bindingOperationName="LoginWithCertificate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="b70f568d-1d24-42d7-976e-bbb03931c2e5"><con:settings/><con:call name="TC14 - PASS - Customer Has Current And Previous Address Moved In Date Less Than Twelve Months Old" id="4750b4f1-bab2-4fca-b8c3-81e5dfeeab2b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://dwinmsswsp01.duns.uk.sopra:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990022</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="16497cb1-4acf-4c81-aca4-4b1b088ef326" name="TC5 - REFER - Certificate Error Code 401 Incorrect Credentials Returned"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-666666</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4aa5b101-ee6a-42c8-a4e5-fefa253ef93f" name="TC6 - PASS - Current Address One Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <wasp:LoginWithCertificate>\r
+         <wasp:application>MSS-555555</wasp:application>\r
+         <wasp:checkIP>true</wasp:checkIP>\r
+      </wasp:LoginWithCertificate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="177ab62b-dbe6-4a7e-922e-76c71de75c9e" name="TC7 - PASS - Current Address Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-111111</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="46d56733-d29a-45a2-ae6e-7a59b7f1fec3" name="TC8 - PASS - Current Address No Moniker Returned"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-202020</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="819b0b74-f270-458d-aa32-6d610413e8a7" name="TC9 - REFER - Current Address No Postcode Error 10487 Returned"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-234567</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ac2c7619-a61b-412f-9798-8c0e56fbb60b" name="TC16 - PASS - Address One Contains Number Followed By Letter"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://dwinmsswsp01.duns.uk.sopra:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990033</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="efe448c8-a991-4b54-9c04-8fc9f8ff931e" name="TC17 - PASS - Address One Contains Number Followed By Symbol"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990044</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1fb00e8c-72cb-4793-aa8b-fbc712deb655" name="TC18 - PASS - Address One Contains Number Followed By Space And Symbol"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990055</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d50ac6dc-989b-4d1f-b227-71aa7c1ca3d4" name="TC19 - PASS - Address One Contains Number Followed By Letter Followed By Symbol"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990066</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="876ac817-c3e3-4e12-af9d-08370b877e21" name="TC20 - PASS - Address One Contains Number Followed By Comma"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990077</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="67244ec3-724a-49c8-9ea1-9921d02288bf" name="TC21 - PASS - Address One Contains Number Followed By Comma Followed By No Space"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-990088</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6355ce54-dd1f-4f1c-acc6-f13b4ba4df9c" name="TC24 - PASS - Customer Has Current And Previous Address Moved In Date Exactly Twelve Months Old"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-880022</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="50723088-02a7-4450-81f3-43b9ec041291" name="TC32 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns No Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550044</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="fc084e4a-7417-4fc5-9245-9cbe2457da23" name="TC34 - PASS - AUTHENTICATED - EIA And BWA With Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-880088</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="00a97fce-26bd-4e1f-812f-6dcf212db3f0" name="TC35 - PASS - Request Contains All Data Including Previous Address But No Bank Details And The Request Message Is Created"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770011-35</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="708f3baf-b702-4b67-8e8c-33f1e360fc0c" name="TC36 - PASS - AUTHENTICATED - EIA Block Without Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770011-36</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="78d3af0e-ec48-4ab8-9388-cda3d37a53f3" name="TC37 - REFER - NOT AUTHENTICATED - EIA Block Without Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770023-37</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4ef61819-821d-42d9-bddb-4dfba343ac1b" name="TC38 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770033-38</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c7a2bd3f-b687-4ae4-8bc3-24edfa791970" name="TC39 - REFER - NOT AUTHENTICATED - EIA And BWA Block Not Included With Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770055-39</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="0cc58a04-0b82-4098-bce5-faa2f9f9bcef" name="TC40 - REFER - AUTHENTICATED REFER - EIA Block Without Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770077-40</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="83c36ad4-6cc3-4037-b146-4a8d8e411067" name="TC41 - REFER - AUTHENTICATED NO DECISION - EIA Block Without Bank Details With Previous Address"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-770099-41</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="869ec9b5-e1c8-4c8e-b57b-a801cd38c1b1" name="TC25 - PASS - Customers Previous Address Sequence Number Does Not Exist On The Addresses Table Error Code 10486 Is Not Returned"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-660033</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="fb755bc3-5e2c-4662-bd0d-c30b35506669" name="TC44 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-660044-44</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="02e01842-eb1e-4c6a-b464-f18841cb2606" name="TC45 - REFER - NOT AUTHENTICATED - EIA And BWA Block Without Bank Details"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-660055</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="03e73996-b0a0-4d5b-9980-aff03c44fcfa" name="TC26 - PASS - Customer Has No Previous Address Address Sequence Number Is 0 Error Code 10486 Is Not Returned"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-660066</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="186f83fb-4ef6-46a0-94bc-167b902b3dbd" name="TC30 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With NumbersSearch String Returns Two Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <wasp:LoginWithCertificate>\r
+         <wasp:application>MSS-550022</wasp:application>\r
+         <wasp:checkIP>true</wasp:checkIP>\r
+      </wasp:LoginWithCertificate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="10570cd2-da20-413d-9ab3-61a68150d996" name="TC31 - PASS - Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Single Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550033</wasp:application>
+         <wasp:checkIP>?</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="742c6784-e51c-4ee0-9aa6-f9743e84938a" name="TC33 - PASS - CC Logic Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Two Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550055</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="29bd20ce-abdc-4ff8-9e58-b5a1f3d6091a" name="TC46 - PASS - Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550066</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9702298c-8fc4-4dae-a2da-eab474e7a86b" name="TC47 - PASS - CC LogicCurrent Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550077</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="768c229b-c105-4c56-87c3-88c320c2824f" name="TC48 - PASS - CC LogicCurrent Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550088</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="60d9779f-6886-40a2-a613-8188041ae256" name="TC49 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-550099</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="b46b2e17-35ce-48a0-bb03-ea50dc24bdcc" name="TC50 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440011</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="3c39f356-464b-4173-866e-e476983d7d77" name="TC51 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Two Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440022</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="f9cfd599-db5b-4080-871c-f6c67441fe2e" name="TC52 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440023</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="622e8c50-3eb4-41e8-9386-9de26f1191f1" name="TC53 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440024</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="faf0bff8-77e6-4729-bf90-c884544c0b4b" name="TC54 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Two Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440025</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="72d24135-589f-4c3a-b5c4-23d8257d1a98" name="TC55 - PASS - Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440026</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1b1f2952-d2ee-485a-ada3-1fd080b28c4f" name="TC56 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440027</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9c65e6d4-2486-405a-afe3-93de48eb3cf0" name="TC57 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Two Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440028</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="197ca0d2-af08-4a03-98bb-3373d65103b2" name="TC58 - PASS - Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440029</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2a77acd5-302e-4f87-8827-44960aa1e251" name="TC59 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440030</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1f216ca9-4c5e-4e5e-b5ae-6ba0a86583b6" name="TC60 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440031</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ec044092-6bfa-4a80-970e-9278070a6b7c" name="TC61 - PASS - Current Address Lines 4 And 5 Are Not Populated Search String Returns Single Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440032</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="84f01783-95c9-4d39-88ed-da7f6a9d5665" name="TC62 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440033</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7713d386-fc72-4d4a-87f9-f728b98fa32e" name="TC63 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440034</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d6ef9a29-7685-48fa-a7dc-9def0c7b4bb8" name="TC65 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440036</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="321af23e-0742-4161-b1b3-ffbdc181a302" name="TC64 - PASS - Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440035</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7f81f752-f0a8-4b83-90aa-bc30245ea949" name="TC66 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440037</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="63f840c6-ad1c-4779-ba39-5e2d85818f5b" name="TC67 - PASS - Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440038</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="86cc5309-2042-41ee-b312-31f02fac919a" name="TC68 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440039</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2937941c-8f93-4ab1-8ba4-29405553ddcc" name="TC69 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440040</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="25d4dbfa-aa17-42f9-a873-9755c11608ee" name="TC70 - PASS - Current Address Postcode Starts With BFPO Search String Returns Single Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440041</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a06efb61-c1ed-46f4-b6b6-e6a25dea240d" name="TC71 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440042</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4d21d0b5-76af-4b2f-8af6-a6cdde56d299" name="TC72 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Multiple Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440045</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4477c7b3-aa11-46fa-9c8d-74a44a849ad4" name="TC73 - PASS - Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Single Moniker"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440044</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d7f6fc1c-3cb3-41c3-9b77-326afcb10367" name="TC74 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns No Monikers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificate>
+         <wasp:application>MSS-440045</wasp:application>
+         <wasp:checkIP>true</wasp:checkIP>
+      </wasp:LoginWithCertificate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://www.uk.experian.com/WASP/LoginWithUsernamePassword" name="LoginWithUsernamePassword" bindingOperationName="LoginWithUsernamePassword" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="c5d7f37f-de9c-457d-b875-4513427a1373"><con:settings/><con:call name="Request 1" id="99b5183d-cfe9-4059-a9b6-57e491864cf6"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithUsernamePassword>
+         <!--Optional:-->
+         <wasp:application>?</wasp:application>
+         <!--Optional:-->
+         <wasp:username>?</wasp:username>
+         <!--Optional:-->
+         <wasp:password>?</wasp:password>
+         <wasp:checkIP>?</wasp:checkIP>
+      </wasp:LoginWithUsernamePassword>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithUsernamePassword"/></con:call></con:operation><con:operation isOneWay="false" action="http://www.uk.experian.com/WASP/STS" name="STS" bindingOperationName="STS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="b44ef839-3228-4c94-a9dd-300c08288f42"><con:settings/><con:call name="Request 1" id="18556189-9170-404a-96ed-492a28b1d1b1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://item-65211:8089/mockSecurityTokenBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:STS>
+         <!--Optional:-->
+         <wasp:authenticationBlock>?</wasp:authenticationBlock>
+      </wasp:STS>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/STS"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="9093" path="/mockSecurityTokenBinding" host="swinmssauto09.noid.in.ssg" name="MockService 1" id="708d7da6-757b-4512-8f0d-6c2bd182b88a" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="LoginWithCertificate" interface="TokenServiceSoap" operation="LoginWithCertificate" id="c414594a-4f90-4118-b2b6-d83a7fbf7d15"><con:settings/><con:defaultResponse>TC57 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Two Monikers</con:defaultResponse><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:response name="TC14 - PASS - Customer Has Current And Previous Address" httpResponseStatus="200" encoding="UTF-8" id="1b440f7b-2ff5-433b-8677-525f972e5328"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockResponse@enable_inline_files">false</con:setting></con:settings><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-22575</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC18 - PASS - Address One Contains Number Followed By Space And Symbol" id="5b66ddbc-b541-4461-b2a7-7d436e973a91" httpResponseStatus="200" encoding="UTF-8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockResponse@enable_inline_files">true</con:setting></con:settings><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990055</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC14 - PASS - Customer Has Current And Previous Address Moved In Date Less Than Twelve Months Old" id="31073881-437c-46a8-b7c8-c50b47c5c4c0" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSD-990022</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC9 - REFER - Current Address No Postcode Error 10487 Returned" id="f425f397-b4c4-4c75-9c7e-0930abaddc2e" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-234567</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC16 - PASS - Address One Contains Number Followed By Letter" id="2553476b-6d40-4059-8bb9-e9389551f3f1" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990033</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC17 - PASS - Address One Contains Number Followed By Symbol" id="335a5561-d3b8-49d3-a97f-f30412614a1f" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990044</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC19 - PASS - Address One Contains Number Followed By Letter Followed By Symbol" id="e5a8ec53-35d1-4938-a0d7-699fc573c61a" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990066</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC20 - PASS - Address One Contains Number Followed By Comma" id="d68db59d-b018-43a5-9a1b-3384f7562388" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990077</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC21 - PASS - Address One Contains Number Followed By Comma Followed By No Space" id="372817b2-c847-49f5-92de-6c0bae29aed8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-990088</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC24 - PASS - Customer Has Current And Previous Address Moved In Date Exactly Twelve Months Old" id="5618b8c4-5bdc-4b5c-a70f-d64534f186c4" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-880022</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC32 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns No Moniker" id="1cb7ae4f-eca1-4afd-ab26-a9e5d029215f" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550044</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC33 - PASS - CC Logic Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Two Monikers" id="792fbd7e-67e3-4c29-8427-f318210c8be9" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550055</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC34 - PASS - AUTHENTICATED - EIA And BWA With Bank Details With Previous Address" id="e1044418-fc1e-4c91-b333-3ae8cf4918a2" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-880088</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC36 - PASS - AUTHENTICATED - EIA Block Without Bank Details With Previous Address" id="49564f9f-d4a5-40f9-a63e-3e47b9b0725f" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770011</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC37 - REFER - NOT AUTHENTICATED - EIA Block Without Bank Details With Previous Address" id="833deb50-15d7-46fd-9779-800ebc11c0f7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770023</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC38 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details With Previous Address" id="d54e2cb6-ef9e-4abc-a740-aed488c94eff" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770033</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC39 - REFER - NOT AUTHENTICATED - EIA And BWA Block Not Included With Bank Details With Previous Address" id="cd788d24-45c8-4625-aca9-e0152ad7f241" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770055</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC40 - REFER - AUTHENTICATED REFER - EIA Block Without Bank Details With Previous Address" id="84af2aa6-ce8d-46fd-ad08-9c99688152bf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770077</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC41 - REFER - AUTHENTICATED NO DECISION - EIA Block Without Bank Details With Previous Address" id="665e43b9-215f-498e-925b-d7b44eb246c8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-770099</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC25 - PASS - Customers Previous Address Sequence Number Does Not Exist On The Addresses Table Error Code 10486 Is Not Returned" id="cccc123f-9186-4ea5-ade9-5e67a6704c4b" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-660033</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC44 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details" id="69f55175-3151-4c50-9780-27888e649405" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-660044</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC45 - REFER - NOT AUTHENTICATED - EIA And BWA Block Without Bank Details" id="b8b95a6a-dada-4b55-9bc4-0244e45d0abc" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-660055</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC26 - PASS - Customer Has No Previous Address Address Sequence Number Is 0 Error Code 10486 Is Not Returned" id="abd67b71-092e-408e-833e-01c182dbc1b4" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-660066</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC30 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Two Monikers" id="c896350c-0b27-4648-b786-c42005f9c037" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550022</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC31 - PASS - Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Single Moniker" id="5c4b5fd1-76f5-468b-a367-924d31d27720" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550033</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC46 - PASS - Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Single Monikers" id="3eb8d07e-11a3-4d1b-9f61-1704e0b3ec35" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550066</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC47 - PASS - CC LogicCurrent Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns No Monikers" id="df5979f1-76d9-4607-b340-afa1e4c3db2e" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550077</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC48 - PASS - CC LogicCurrent Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Multiple Monikers" id="4e2f0986-eae8-4b82-8e3e-0b3887e792df" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550088</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC49 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers" id="1fb853cf-bc8d-418d-86f8-1d5c0b27e5cf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-550099</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC50 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers" id="42f96e53-06c3-48c5-babb-6952ca945a00" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440011</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC51 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Two Monikers" id="c46a7594-31ea-4f8d-88f4-3af2ecfa9dab" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440022</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC52 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers" id="305ea38a-3951-4c93-a9be-7b28d18e7935" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440023</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC53 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers" id="39379f6b-6df2-475e-94ce-239f7db73511" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440024</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC54 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Two Monikers" id="2f465de9-f71e-4847-995a-1fd2e97226b2" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440025</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC55 - PASS - Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Single Monikers" id="1a88edb6-6b1f-4dee-8509-a7726b0f802d" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440026</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC56 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns No Monikers" id="25c2b1ac-3286-4bfa-8014-0543676d93cb" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440027</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC57 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Two Monikers" id="f4fa76c7-0c64-458d-b867-1a24f3d21caa" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440028</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC58 - PASS - Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Single Monikers" id="364290e1-fd9e-4ceb-90ce-fde0a800b5f9" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440029</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC59 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns No Monikers" id="13e68d2d-6b1b-4b75-8707-bef6ad39a9b7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440030</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC60 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns Multiple Monikers" id="dc21e694-738a-4dec-9aaf-537c78ab0fdf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440031</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC61 - PASS - Current Address Lines 4 And 5 Are Not Populated Search String Returns Single Moniker" id="b19a9570-7eb8-4034-a9b0-9c20c52ea05f" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440032</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC62 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns No Monikers" id="4823d416-1674-4252-a40d-be60f49bdd4e" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440033</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC63 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers" id="a2581986-e7f4-4ed3-b477-f9fea4e1f9fe" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440036</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC64 - PASS - Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers" id="90150d7c-71f6-4f60-96ed-583d202585dc" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440035</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC65 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns No Monikers" id="8d8437e5-84bd-42b9-bdf2-2a05b1eb0105" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440036</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC66 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers" id="cbe82580-c2b3-4547-838d-50b5a25df478" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440037</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC67 - PASS - Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers" id="0286ca6f-088c-4e5f-a25d-db1159c5361b" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440038</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC68 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns No Monikers" id="a7ef7b21-9af2-4322-89e1-7139725e21b7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440039</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC69 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns Multiple Monikers" id="5618b352-4fc4-4621-bb1c-d30e0c2b06a3" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440040</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC70 - PASS - Current Address Postcode Starts With BFPO Search String Returns Single Moniker" id="5e56c5a4-b4fb-47c8-9031-20c031ca8584" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440041</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC71 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns No Monikers" id="3e8bc3ca-46ab-4be2-bc46-cffd75cc24f8" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440042</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC72 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Multiple Monikers" id="afb741f3-4bbf-4f27-bfb3-8b06d75eb930" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440043</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC73 - PASS - Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Single Moniker" id="1366963b-819c-433a-bcba-ac57ec588e85" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440044</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:response name="TC74 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns No Monikers" id="0029ae01-79a7-4fb9-869f-fb79cbbf14c2" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wasp="http://www.uk.experian.com/WASP/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wasp:LoginWithCertificateResponse>
+         <wasp:LoginWithCertificateResult>MSS-440045</wasp:LoginWithCertificateResult>
+      </wasp:LoginWithCertificateResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.uk.experian.com/WASP/LoginWithCertificate"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>XPATH TC9 - REFER - Current Address No Postcode Error 10487 Returned</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-234567</con:match><con:response>TC9 - REFER - Current Address No Postcode Error 10487 Returned</con:response></con:query><con:query><con:name>XPATH TC14 - PASS - Customer Has Current And Previous Address Moved In Date Less Than Twelve Months Old</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990022</con:match><con:response>TC14 - PASS - Customer Has Current And Previous Address</con:response></con:query><con:query><con:name>XPATH TC16 - PASS - Address One Contains Number Followed By Letter</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990033</con:match><con:response>TC16 - PASS - Address One Contains Number Followed By Letter</con:response></con:query><con:query><con:name>XPATH TC17 - PASS - Address One Contains Number Followed By Symbol</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990044</con:match><con:response>TC17 - PASS - Address One Contains Number Followed By Symbol</con:response></con:query><con:query><con:name>XPATH TC19 - PASS - Address One Contains Number Followed By Letter Followed By Symbol</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990066</con:match><con:response>TC19 - PASS - Address One Contains Number Followed By Letter Followed By Symbol</con:response></con:query><con:query><con:name>XPATH TC20 - PASS - Address One Contains Number Followed By Comma</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990077</con:match><con:response>TC20 - PASS - Address One Contains Number Followed By Comma</con:response></con:query><con:query><con:name>XPATH TC21 - PASS - Address One Contains Number Followed By Comma Followed By No Space</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-990088</con:match><con:response>TC21 - PASS - Address One Contains Number Followed By Comma Followed By No Space</con:response></con:query><con:query><con:name>XPATH TC24 - PASS - Customer Has Current And Previous Address Moved In Date Exactly Twelve Months Old</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-880022</con:match><con:response>TC24 - PASS - Customer Has Current And Previous Address Moved In Date Exactly Twelve Months Old</con:response></con:query><con:query><con:name>XPATH TC32 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns No Moniker</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550044</con:match><con:response>TC32 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns No Moniker</con:response></con:query><con:query><con:name>XPATH TC33 - PASS - CC Logic Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Two Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550055</con:match><con:response>TC33 - PASS - CC Logic Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Two Monikers</con:response></con:query><con:query><con:name>XPATH TC34 - PASS - AUTHENTICATED - EIA And BWA With Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-880088</con:match><con:response>TC34 - PASS - AUTHENTICATED - EIA And BWA With Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC36 - PASS - AUTHENTICATED - EIA Block Without Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770011</con:match><con:response>TC36 - PASS - AUTHENTICATED - EIA Block Without Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC37 - REFER - NOT AUTHENTICATED - EIA Block Without Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770023</con:match><con:response>TC37 - REFER - NOT AUTHENTICATED - EIA Block Without Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC38 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770033</con:match><con:response>TC38 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC39 - REFER - NOT AUTHENTICATED - EIA And BWA Block Not Included With Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770055</con:match><con:response>TC39 - REFER - NOT AUTHENTICATED - EIA And BWA Block Not Included With Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC40 - REFER - AUTHENTICATED REFER - EIA Block Without Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770077</con:match><con:response>TC40 - REFER - AUTHENTICATED REFER - EIA Block Without Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC41 - REFER - AUTHENTICATED NO DECISION - EIA Block Without Bank Details With Previous Address</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-770099</con:match><con:response>TC41 - REFER - AUTHENTICATED NO DECISION - EIA Block Without Bank Details With Previous Address</con:response></con:query><con:query><con:name>XPATH TC25 - PASS - Customers Previous Address Sequence Number Does Not Exist On The Addresses Table Error Code 10486 Is Not Returned</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-660033</con:match><con:response>TC25 - PASS - Customers Previous Address Sequence Number Does Not Exist On The Addresses Table Error Code 10486 Is Not Returned</con:response></con:query><con:query><con:name>XPATH TC44 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-660044</con:match><con:response>TC44 - REFER - NOT AUTHENTICATED - EIA Block With Bank Details</con:response></con:query><con:query><con:name>XPATH TC45 - REFER - NOT AUTHENTICATED - EIA And BWA Block Without Bank Details</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-660055</con:match><con:response>TC45 - REFER - NOT AUTHENTICATED - EIA And BWA Block Without Bank Details</con:response></con:query><con:query><con:name>XPATH TC26 - PASS - Customer Has No Previous Address Address Sequence Number Is 0 Error Code 10486 Is Not Returned</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-660066</con:match><con:response>TC26 - PASS - Customer Has No Previous Address Address Sequence Number Is 0 Error Code 10486 Is Not Returned</con:response></con:query><con:query><con:name>XPATH TC30 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Two Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550022</con:match><con:response>TC30 - PASS - CC Logic Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Two Monikers</con:response></con:query><con:query><con:name>XPATH TC31 - PASS - Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Single Moniker</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550033</con:match><con:response>TC31 - PASS - Current Address Line 1 And Line 2 Do Not Start With Numbers Search String Returns Single Moniker</con:response></con:query><con:query><con:name>XPATH TC46 - PASS - Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550066</con:match><con:response>TC46 - PASS - Current Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC47 - PASS - CC LogicCurrent Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550077</con:match><con:response>TC47 - PASS - CC LogicCurrent Address Line 1 Starts With A Number Address Line 2 Does Not Contain A Number Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC48 - PASS - CC LogicCurrent Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550088</con:match><con:response>TC48 - PASS - CC LogicCurrent Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC49 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-550099</con:match><con:response>TC49 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC50 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440011</con:match><con:response>TC50 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC51 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Two Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440022</con:match><con:response>TC51 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Two Monikers</con:response></con:query><con:query><con:name>XPATH TC52 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440023</con:match><con:response>TC52 - PASS - Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC53 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440024</con:match><con:response>TC53 - PASS - CC Logic Current Address Line 1 Does Not Start With A Number Address Line 2 Does Start With A Number Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC54 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Two Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440025</con:match><con:response>TC54 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Two Monikers</con:response></con:query><con:query><con:name>XPATH TC55 - PASS - Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440026</con:match><con:response>TC55 - PASS - Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC56 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440027</con:match><con:response>TC56 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 2 Contains A Number Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC57 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Two Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440028</con:match><con:response>TC57 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Two Monikers</con:response></con:query><con:query><con:name>XPATH TC58 - PASS - Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440029</con:match><con:response>TC58 - PASS - Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC59 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440030</con:match><con:response>TC59 - PASS - CC Logic Current Address Line 1 Starst With A Number Address Line 5 Is Not Populated Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC60 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440031</con:match><con:response>TC60 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC61 - PASS - Current Address Lines 4 And 5 Are Not Populated Search String Returns Single Moniker</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440032</con:match><con:response>TC61 - PASS - Current Address Lines 4 And 5 Are Not Populated Search String Returns Single Moniker</con:response></con:query><con:query><con:name>XPATH TC62 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440033</con:match><con:response>TC62 - PASS - CC Logic Current Address Lines 4 And 5 Are Not Populated Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC63 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440034</con:match><con:response>TC63 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC64 - PASS - Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440035</con:match><con:response>TC64 - PASS - Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC65 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440036</con:match><con:response>TC65 - PASS - CC Logic Current Address Lines 3 And 4 And 5 Are Not Populated Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC66 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440037</con:match><con:response>TC66 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC67 - PASS - Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440038</con:match><con:response>TC67 - PASS - Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns Single Monikers</con:response></con:query><con:query><con:name>XPATH TC68 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440039</con:match><con:response>TC68 - PASS - CC Logic Current Address Lines 2 And 3 And 4 And 5 Are Not Populated Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC69 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440040</con:match><con:response>TC69 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC70 - PASS - Current Address Postcode Starts With BFPO Search String Returns Single Moniker</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440041</con:match><con:response>TC70 - PASS - Current Address Postcode Starts With BFPO Search String Returns Single Moniker</con:response></con:query><con:query><con:name>XPATH TC71 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440042</con:match><con:response>TC71 - PASS - CC Logic Current Address Postcode Starts With BFPO Search String Returns No Monikers</con:response></con:query><con:query><con:name>XPATH TC72 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Multiple Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440043</con:match><con:response>TC72 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Multiple Monikers</con:response></con:query><con:query><con:name>XPATH TC73 - PASS - Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Single Moniker</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440044</con:match><con:response>TC73 - PASS - Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns Single Moniker</con:response></con:query><con:query><con:name>XPATH TC74 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns No Monikers</con:name><con:query>declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace wasp='http://www.uk.experian.com/WASP/';
+//wasp:application</con:query><con:match>MSS-440045</con:match><con:response>TC74 - PASS - CC Logic Current Address Line 1 Contains Number Only, Address Line 2 Does Not Contain A Number Search String Returns No Monikers</con:response></con:query></con:dispatchConfig></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

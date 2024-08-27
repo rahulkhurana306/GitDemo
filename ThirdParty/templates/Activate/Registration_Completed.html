@@ -1,0 +1,53 @@
+<HTML>
+
+<BODY>
+<BODY TOPMMARGIN=5>
+<BODY LEFTMARGIN=400>
+
+<PRE>   
+<Div id = "returnControlToActivate"/>
+  
+<script language="JavaScript" type="text/javascript">
+<!--
+
+  var query = window.location.search;
+  // Skip the leading ?, which should always be there, but be careful anyway
+  if (query.substring(0, 1) == '?') {
+    query = query.substring(1);
+  }
+
+//function getUrlVars() {
+//    var vars = {};
+//    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+//    function(m,key,value) {
+//     vars[key] = value;
+//	  alert(key);
+//   });
+//   return vars;
+// }
+
+function cancelprocessing()
+{
+var x="Cancelled";
+alert("Running javascript function 'cancelprocessing()'");
+return x
+}
+
+function returnresult()
+{
+var x='Inside returnresult()';
+// Set the background of the whole page to red.
+document.getElementsByTagName("body")[0].style.backgroundColor = "#FF0000";
+alert("Running javascript function 'returnresult()'");
+//var fType = getUrlVars()["type"];
+return x + "  " + query;
+}
+
+//-->
+</script>
+
+<b>Registration Completed Successfully </Registration Complete></b>
+</PRE>
+<p><b>Note: This is the Dummy Page to display that registration is completed successfully.</b> </p>
+</BODY>
+</HTML>

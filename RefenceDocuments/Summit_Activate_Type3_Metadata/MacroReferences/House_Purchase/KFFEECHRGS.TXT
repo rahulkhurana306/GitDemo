@@ -1,0 +1,3 @@
+KFFEECHRGS	Keyword Framework Macro		0	N	Y	A
+00001	MACRO		'NAVFEES1'	Fees
+00002	COMMIT			

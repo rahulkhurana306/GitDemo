@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{B8001E9F-5F34-4398-A332-5C156A37F868}</ProjectGuid>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ng_mss_automation</RootNamespace>
+    <AssemblyName>MSS_Automation</AssemblyName>
+    <NoWarn>1591</NoWarn>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <RANOREX_BIN_PATH Condition=" '$(RANOREX_BIN_PATH)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Ranorex\Studio', 'InstallDir', null, RegistryView.Registry64, RegistryView.Registry32))\Bin</RANOREX_BIN_PATH>
+    <RanorexTargetsPath>$(RANOREX_BIN_PATH)\Ranorex.MSBuild.Targets</RanorexTargetsPath>
+    <projectdefaultrepository>a51d5a9c-6908-4940-b5ea-87ba4c2921f9</projectdefaultrepository>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="FubarCoder.RestSharp.Portable.Core">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.Core.4.0.8\lib\net45\FubarCoder.RestSharp.Portable.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.JsonPatch">
+      <HintPath>..\packages\Microsoft.AspNetCore.JsonPatch.7.0.3\lib\net462\Microsoft.AspNetCore.JsonPatch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Bootstrapper">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Core.Resolver">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Cef">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.ChromeWeb">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Delphi">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.FirefoxWeb">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Flex">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Java">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Mobile">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Msaa">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Office">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Qt">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.RawText">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Sap">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Uia">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WebDriver">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Win32">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WinForms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WinForms.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Wpf">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Wpf.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.ReportToPDF">
+      <HintPath>..\packages\Ranorex.ReportToPDF.1.0.17\lib\net40\Ranorex.ReportToPDF.exe</HintPath>
+    </Reference>
+    <Reference Include="System">
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing">
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>..\packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+    </Reference>
+    <Reference Include="System.Xml">
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <id>4572c643-3dfe-4458-ab3f-ac500fb2a70b</id>
+    </Compile>
+    <Compile Include="CodeModule\AccountType.cs">
+      <id>5e9b164d-92fd-4216-a5a7-30cd2a3a37a2</id>
+    </Compile>
+    <Compile Include="CodeModule\ActionKeywords.cs">
+      <id>0e0bc0a3-bad0-44b2-90ce-499e833c07f2</id>
+    </Compile>
+    <Compile Include="CodeModule\ActivateRateChange.cs">
+      <id>c1693fc3-a871-4ba0-984e-48fde390d96c</id>
+    </Compile>
+    <Compile Include="CodeModule\ActivateTable.cs">
+      <id>87e17d85-51e4-4055-8771-e52ce7fbd5e8</id>
+    </Compile>
+    <Compile Include="CodeModule\AddressCreate.cs">
+      <id>ff244872-69be-4bfd-b057-3cb42a82e0b4</id>
+    </Compile>
+    <Compile Include="CodeModule\AffordabilityControlExpenditureTypes.cs">
+      <id>dc478bb1-1c59-4c56-bb34-e80f3eb60c89</id>
+    </Compile>
+    <Compile Include="CodeModule\AffordabilityControlIncommeTypes.cs">
+      <id>4288a504-3d50-4845-8fc8-09a823f73447</id>
+    </Compile>
+    <Compile Include="CodeModule\AutomationSecurityUtil.cs">
+      <id>c6fa4ff5-6737-4d35-a314-a273233dac1b</id>
+    </Compile>
+    <Compile Include="CodeModule\CacheRepository.cs">
+      <id>ef93bb32-7562-44b4-b380-d5ff08bd7355</id>
+    </Compile>
+    <Compile Include="CodeModule\CallCenterGlobalVariable.cs">
+      <id>37d1e1f2-f4ab-4e29-90d4-23bbc2d96f34</id>
+    </Compile>
+    <Compile Include="CodeModule\Completions.cs">
+      <id>505eb516-f109-409b-9d3d-457584cbb182</id>
+    </Compile>
+    <Compile Include="CodeModule\CorporateCustomerCreate.cs">
+      <id>9ef474b3-cd1e-4890-a906-7224736f5a3e</id>
+    </Compile>
+    <Compile Include="CodeModule\CsvUtility.cs">
+      <id>0e60fce6-65ae-4bac-a1fc-1d843e93d6cb</id>
+    </Compile>
+    <Compile Include="CodeModule\CustomerLink.cs">
+      <id>b311fed0-9bf0-4dc3-9398-9eb911e8c233</id>
+    </Compile>
+    <Compile Include="CodeModule\ClientDetails.cs">
+      <id>7a35cfdf-bb3d-4c37-995f-cee1b503b65a</id>
+    </Compile>
+    <Compile Include="CodeModule\ApplicationGeneralDetails.cs">
+      <id>6f172270-6c9a-4e00-928c-539f9b4de452</id>
+    </Compile>
+    <Compile Include="CodeModule\DBUtility.cs">
+      <id>1cc32aec-6f26-461a-9be9-e068a9198cfb</id>
+    </Compile>
+    <Compile Include="CodeModule\DeDupe.cs">
+      <id>66e9f292-56bf-4396-9655-0b38b64df5eb</id>
+    </Compile>
+    <Compile Include="CodeModule\DirectDebitDetails.cs">
+      <id>b878124f-b267-492d-9b4b-75c375a6a60f</id>
+    </Compile>
+    <Compile Include="CodeModule\ExcelUtility.cs">
+      <id>b411c871-4fb1-4ea1-957c-71a40f2d7da2</id>
+    </Compile>
+    <Compile Include="CodeModule\FeeCharges.cs">
+      <id>ad0cbdac-0bb8-44ac-ae95-88b8931dadce</id>
+    </Compile>
+    <Compile Include="CodeModule\FunctionalKeywords.cs">
+      <id>2f82abc4-6968-4b12-b1e7-5efb62b351c2</id>
+    </Compile>
+    <Compile Include="CodeModule\FundsMovementCreate.cs">
+      <id>09bd0422-631b-4c44-bd81-2abe4fb0e53e</id>
+    </Compile>
+    <Compile Include="CodeModule\FundsReleaseDetails.cs">
+      <id>151901d8-8c83-47d9-b356-3a93700498fb</id>
+    </Compile>
+    <Compile Include="CodeModule\IllustrationClientDetails.cs">
+      <id>51488ba7-59a8-4324-a310-5fee99eed326</id>
+    </Compile>
+    <Compile Include="CodeModule\IllustrationComplete.cs">
+      <id>62ab95d5-6923-459d-83d9-d8c9d63ba489</id>
+    </Compile>
+    <Compile Include="CodeModule\IllustrationGeneralDetails.cs">
+      <id>e7f41cb9-9b08-40c7-beec-5dc6ac090f1d</id>
+    </Compile>
+    <Compile Include="CodeModule\IllustrationLoanRequirements.cs">
+      <id>84366247-00a4-444e-b632-8d9c15eb925b</id>
+    </Compile>
+    <Compile Include="CodeModule\JobRun.cs">
+      <id>3b2daf7e-d544-45a3-bf77-c475d4332d75</id>
+    </Compile>
+    <Compile Include="CodeModule\ListOfValues.cs">
+      <id>6881bedf-2fc4-4947-8ebb-6d64b23f33b2</id>
+    </Compile>
+    <Compile Include="CodeModule\LoanRequirements.cs">
+      <id>52a9dbe6-8dfa-46b4-892b-5cec91c83ef1</id>
+    </Compile>
+    <Compile Include="CodeModule\Main.cs">
+      <id>94d1a531-9b63-4447-a0ea-be7f568ef1af</id>
+    </Compile>
+    <Compile Include="CodeModule\Constants.cs">
+      <id>eda5be4d-d56e-434f-a75f-3c37acb9d6b1</id>
+    </Compile>
+    <Compile Include="CodeModule\MenuPrompt.cs">
+      <id>3d48d89a-19e2-46d8-89ec-5ddbb5034d92</id>
+    </Compile>
+    <Compile Include="CodeModule\NavigateToActivateScreen.cs">
+      <id>63dff487-c26c-4ec9-bc0c-c7454f605900</id>
+    </Compile>
+    <Compile Include="CodeModule\NoticeAddress.cs">
+      <id>628c12e6-a64e-4dea-9e45-25de249980b9</id>
+    </Compile>
+    <Compile Include="CodeModule\OracleUtility.cs">
+      <id>f229363f-2b49-4da8-95c6-dd3839237713</id>
+    </Compile>
+    <Compile Include="CodeModule\OtherIncomeExpenditure.cs">
+      <id>86e116d5-a0e4-40e6-87ee-fd8bd9f5773e</id>
+    </Compile>
+    <Compile Include="CodeModule\PaymentElementCreate.cs">
+      <id>948bed76-0ead-416f-962a-99708dea7bc0</id>
+    </Compile>
+    <Compile Include="CodeModule\PrintActivate.cs">
+      <id>222c9da3-647b-41ff-98dc-cb81c4c53339</id>
+    </Compile>
+    <Compile Include="CodeModule\ProductAddMaintain.cs">
+      <id>5284aa3b-32d8-4b26-a872-f9e904868fed</id>
+    </Compile>
+    <Compile Include="CodeModule\PropertyCreateAndLink.cs">
+      <id>bf3aad0d-d3fe-4214-afba-7beb52e48788</id>
+    </Compile>
+    <Compile Include="CodeModule\PropertyDetails.cs">
+      <id>05ef1a17-f7ad-4bcb-8381-5fa989fd3f9e</id>
+    </Compile>
+    <Compile Include="CodeModule\ReportRowData.cs">
+      <id>d4a44440-10f2-40ed-80ca-d59faf533ffa</id>
+    </Compile>
+    <Compile Include="CodeModule\ReturnFunds.cs">
+      <id>7120761b-c3e4-4a9d-9b39-44819c7abd38</id>
+    </Compile>
+    <Compile Include="CodeModule\SearchAndSelectDeDupeRecords.cs">
+      <id>b3215eb2-e699-4eb3-a297-2b0915ecedd2</id>
+    </Compile>
+    <Compile Include="CodeModule\SetApplicationContext.cs">
+      <id>0ed8139e-6d5d-4062-9f9e-b67977523011</id>
+    </Compile>
+    <Compile Include="CodeModule\Settings.cs">
+      <id>d2f7e744-88b5-4ec0-be7b-07e34cb15c89</id>
+    </Compile>
+    <Compile Include="CodeModule\SocietyControlMaintain.cs">
+      <id>bef6211c-8083-436d-ac72-51ec711f12b7</id>
+    </Compile>
+    <Compile Include="CodeModule\SolicitorDetails.cs">
+      <id>f67a205b-3712-4710-b6ea-f566d760ff6e</id>
+    </Compile>
+    <Compile Include="CodeModule\StageRelease.cs">
+      <id>2dfd75db-7083-4487-9a24-5c72e550297c</id>
+    </Compile>
+    <Compile Include="CodeModule\SubAccountInsuranceCreate.cs">
+      <id>f8678732-f2e6-4982-8772-014ff787c3a3</id>
+    </Compile>
+    <Compile Include="CodeModule\SubAccountMortgageCreate.cs">
+      <id>45b534fc-7f41-4ebc-a673-131f2d02afc8</id>
+    </Compile>
+    <Compile Include="CodeModule\SubAccountSavingCreate.cs">
+      <id>0b7469ac-3346-4ba1-a033-dc472ffeef91</id>
+    </Compile>
+    <Compile Include="CodeModule\Table.cs">
+      <id>1a489a0a-8f80-42fa-839f-c4ca9318e29e</id>
+    </Compile>
+    <Compile Include="CodeModule\TechnicalKeywords.cs">
+      <id>7e6b7e40-01d0-4345-b9ca-4849d5aaa176</id>
+    </Compile>
+    <Compile Include="CodeModule\Test.cs">
+      <id>266f6920-b7f3-4c5a-a632-1e044149dac7</id>
+    </Compile>
+    <Compile Include="CodeModule\TestDataConstants.cs">
+      <id>2f51f6cb-6a47-4b84-8a31-18c7c9687765</id>
+    </Compile>
+    <Compile Include="CodeModule\TransactionPosting.cs">
+      <id>ee64193d-a664-488a-b0e1-a91544101057</id>
+    </Compile>
+    <Compile Include="CodeModule\Tree.cs">
+      <id>691e64c6-c13c-43df-b233-5bb34b5bdbd1</id>
+    </Compile>
+    <Compile Include="CodeModule\UpdateEventReviewDate.cs">
+      <id>91f10a38-8af0-4408-92cb-913f9483a860</id>
+    </Compile>
+    <Compile Include="CodeModule\UpdateLicenseStatus.cs">
+      <id>a182da6d-3e20-4dec-a4b1-3472ed3a9a6e</id>
+    </Compile>
+    <Compile Include="CodeModule\Utility.cs">
+      <id>dfceae2e-c89b-458b-9f11-17d4fea1c4c9</id>
+    </Compile>
+    <Compile Include="MSS_AutomationRepository.cs">
+      <BoundTo>a51d5a9c-6908-4940-b5ea-87ba4c2921f9</BoundTo>
+      <DependentUpon>MSS_AutomationRepository.rxrep</DependentUpon>
+      <RepositoryCode>true</RepositoryCode>
+      <id>b89fcad7-e72d-4cd7-beaf-0e0c4d6ce950</id>
+    </Compile>
+    <Compile Include="Program.cs">
+      <id>961f6f91-5157-4fcf-8714-d484f306ebe2</id>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <id>0d21b5b9-95ac-4af1-a88d-2a38bebd63bc</id>
+    </None>
+    <None Include="MSS_AutomationRepository.rximg">
+      <BoundTo>a51d5a9c-6908-4940-b5ea-87ba4c2921f9</BoundTo>
+      <DependentUpon>MSS_AutomationRepository.rxrep</DependentUpon>
+      <imageblob>true</imageblob>
+      <id>3aaeb011-6b48-4c72-b144-4328eab0e7c9</id>
+    </None>
+    <None Include="MSS_AutomationRepository.rxrep">
+      <id>a51d5a9c-6908-4940-b5ea-87ba4c2921f9</id>
+      <repoid>dc8289f1-74fc-4731-9dbb-c3502d1e8a5a</repoid>
+      <reporootid>8ff77ae7-3c50-4c77-a67e-37f03f3d3338</reporootid>
+    </None>
+    <None Include="packages.config">
+      <id>1b978c38-483a-4e17-8b84-eed0bf316869</id>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MSS_Automation.rxtmg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <id>fab3788a-a2c1-48ef-9497-ee8b8d68917f</id>
+    </Content>
+    <Content Include="MSS_Automation.rxtst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <id>ea383866-895d-4e33-8aa5-bc3fc9313674</id>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CodeModule">
+      <id>84b6048e-de7d-46f7-b484-870207a3ccbe</id>
+    </Folder>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets">
+  </Import>
+  <Import Condition="Exists('$(RanorexTargetsPath)')" Project="$(RanorexTargetsPath)">
+  </Import>
+</Project>

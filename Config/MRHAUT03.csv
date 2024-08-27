@@ -1,0 +1,35 @@
+RUN_MODE,3
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnxmssfobug02.noid.in.sopra:8888/forms/frmservlet?config=MRHAUT03standalone,
+SUMMIT_REMOTE_SID,MRHAUT03,
+SUMMIT_DB_HOST_SERVICE,MRHAUT03
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHAUT03/print_outs,
+SUMMIT_TITLE,MRHAUT03
+EID_SERVLET_URL,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services/ElectronicIdentificationWebService
+EQUIFAX_AIS_WEBSERVICE_URL,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services/CreditSearch
+API_SERVICE_URL, https://dlnxaxwnoid03.noid.in.ssg:28589
+
+EXTERNAL_AFFORDABILITY_HOSTNAME,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services
+EXTERNAL_AFFORDABILITY_WEBSERVICE_URL,/CalculateExternalAffordability
+
+QUEST_HOSTNAME,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services
+AWE_AIS_WEBSERVICE_URL,https://dlnxmss56eap01.noid.in.ssg:28543/aisws/awe/services/sendMessageToQueue
+
+SUMMIT_DB_HOST_NAME,dlnxmssautodb01.noid.in.ssg
+SUMMIT_REMOTE_HOST,dlnxmssautodb01.noid.in.ssg,
+
+HOPEWISER_PAF_WEBSERVICE_URL,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services/AddressSearch
+QASPROWEB_PAF_WEBSERVICE_URL,https://dlnxmss56eap01.noid.in.ssg:28543/mssinteg/mss-integration-services/AddressSearch
+HOPEWISER_PAF_LU_WEBSERVICE_URL,https://dlnxaxwnoid03.noid.in.ssg:28589/api/services/hpwAddressServer?wsdl
+
+LISA_URL,https://dlnxmss56eap01.noid.in.ssg:28543/lisa-web-services/login,
+LISA_CLIENT_ID,cZQfBdlsfK5ki1W02hMBZjMPcTyO,LISA Dev Environments
+LISA_CLIENT_SECRET,894aece9-40df-49e9-aac4-115b4b31ad79,LISA Dev Environments
+
+
+SERVER_DB_DEFAULT_HOSTNAME,dlnxmssautodb01.noid.in.ssg
+SERVER_OFM_HOSTNAME,dlnxmssfobug02.noid.in.sopra
+SERVER_DB_HOSTNAME,dlnxmssautodb01.noid.in.ssg
+
+GET_DOCUMENT_URL,https://dlnxmss56eap01.noid.in.ssg:28543/aisws/documentserver/GetDocument?

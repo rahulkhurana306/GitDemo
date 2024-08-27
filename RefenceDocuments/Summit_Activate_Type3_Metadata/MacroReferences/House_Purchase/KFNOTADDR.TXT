@@ -1,0 +1,3 @@
+KFNOTADDR	Keyword Framework Macro		0	N	Y	A
+00001	WINDOW		'W_MA003_01','',''	Notice Address
+00002	COMMIT			

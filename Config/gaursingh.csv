@@ -1,0 +1,7 @@
+RUN_MODE,3,
+PROJ_STAGE,Production,
+
+SUMMIT_TITLE,MRHNAUT4,
+SUMMIT_ENV_URL,http://dlnxmssfobug02.noid.in.sopra:8888/forms/frmservlet?config=MRHNAUT4standalone,
+SUMMIT_REMOTE_SID,MRHNAUT4,
+SUMMIT_DB_HOST_SERVICE,MRHNAUT4,

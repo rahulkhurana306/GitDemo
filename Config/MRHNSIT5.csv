@@ -1,0 +1,11 @@
+RUN_MODE,3
+PROJ_STAGE,Production
+
+SUMMIT_ENV_URL,http://dlnx56msspatofm01.noid.in.ssg:8888/forms/frmservlet?config=MRHNSIT5standalone,
+SUMMIT_REMOTE_SID,MRHNSIT5,
+SUMMIT_DB_HOST_SERVICE,MRHNSIT5,
+SUMMIT_REMOTE_DIR,/sgss/projects/MSS/MRHNSIT5/print_outs,
+SUMMIT_TITLE,MRHNSIT5
+SUMMIT_REMOTE_HOST,dlnxmssfobug01
+SUMMIT_DB_HOST_NAME,dlnxmssfobug01
+

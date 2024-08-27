@@ -1,0 +1,5 @@
+Account Reference,Test Name,Society,Customer Type,Fullname,Alpha Key,Previous/Maiden Name,Date Name Changed,Status,Commencement Date,Pref Cont Meth,Doc Delivery Pref,Work Phone,Landline Home Phone,Mobile Phone,Email Address,Fax No,Otp Preference,Prevent Auto Delete(Y/N),Vat Exempt,Resides In Reportable Country(Y/N),Country Of Residence,High Net Worth(Y/N)
+144987_CorpCustomer_Creation,Corporate Customer Creation,1,Corporate,144987_Corporate Customer Creation,DEFAULT,,,Active,,,,,,,,,,N,,Y,GBR,N
+145003_Corp_Customer_1,Corporate Customer 1,1,Corporate,145003_Corp_Customer1,DEFAULT,,,Active,,,,,,,,,,N,,Y,GBR,N
+145003_Corp_Customer_2,Corporate Customer 2,1,Corporate,145003_Corp_Customer2,DEFAULT,,,Active,,,,,,,corpcustomer2@gmail.com,,,N,,Y,GBR,N
+DCR-264-Mortgage0,Reference Test Case,1,Corporate,DCR-264-Mortgage0_SBS,DEFAULT,,,Active,,,,,,,,,,N,,Y,GBR,N

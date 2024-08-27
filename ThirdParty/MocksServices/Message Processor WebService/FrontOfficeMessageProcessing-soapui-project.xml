@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="FrontOfficeMessageProcessingMockService" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="93f5752f-6e2b-48b3-86b1-018c129ecf56" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="200508" name="ExternalMessageServiceEndPoint" type="wsdl" bindingName="{http://www.baiworld.com/componentBanker/portal/accountService}ExternalMessageServiceEndPoint" soapVersion="1_2" anonymous="optional" definition="D:/AIS/Made by me/Evidence/CSR 4.2/DCR-614/FrontOfficeSecureMessage.wsdl" id="1bf74877-a23c-498d-af0f-ded150a0867f" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/AIS/Made%20by%20me/Evidence/CSR%204.2/DCR-614/FrontOfficeSecureMessage.wsdl"><con:part><con:url>file:/D:/AIS/Made%20by%20me/Evidence/CSR%204.2/DCR-614/FrontOfficeSecureMessage.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ExternalMessageService" targetNamespace="http://www.baiworld.com/componentBanker/portal/accountService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.baiworld.com/componentBanker/portal/accountService" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+  <wsp:Policy wsu:Id="ExternalMessageServiceEndPoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:RequireClientCertificate/>
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.baiworld.com/componentBanker/portal/accountService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Bai.Portal.External"/>
+      <xs:element name="SaveMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" nillable="true" type="q1:SaveMessageRequest" xmlns:q1="http://schemas.datacontract.org/2004/07/Bai.Portal.External"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SaveMessageResult" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Bai.Portal.External" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/Bai.Portal.External">
+      <xs:complexType name="SaveMessageRequestAccount">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string"/>
+          <xs:element name="Customers" nillable="true" type="tns:ArrayOfMessageRequestCustomer"/>
+          <xs:element name="DiaryEventCode" nillable="true" type="xs:string"/>
+          <xs:element name="DiaryEventCompletionDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="DiaryText" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveMessageRequestApplication">
+        <xs:sequence>
+          <xs:element name="Mortgage" nillable="false" type="xs:string"/>
+          <xs:element name="ApplicationSequence" nillable="false" type="xs:string"/>
+          <xs:element name="MortgageDirect" nillable="false" type="xs:string"/>
+          <xs:element name="Customers" nillable="true" type="tns:ArrayOfMessageRequestCustomer"/>
+          <xs:element name="TemplateCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="MessageText" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SaveMessageRequest">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element name="Account" nillable="true" type="tns:SaveMessageRequestAccount"/>
+            <xs:element name="Application" nillable="true" type="tns:SaveMessageRequestApplication"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaveMessageRequest" nillable="true" type="tns:SaveMessageRequest"/>
+      <xs:complexType name="ArrayOfMessageRequestCustomer">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageRequestCustomer" nillable="true" type="tns:MessageRequestCustomer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMessageRequestCustomer" nillable="true" type="tns:ArrayOfMessageRequestCustomer"/>
+      <xs:complexType name="MessageRequestCustomer">
+        <xs:sequence>
+          <xs:element name="CustomerNumber" type="xs:int"/>
+          <xs:element name="CustomerSaluation" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MessageRequestCustomer" nillable="true" type="tns:MessageRequestCustomer"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IExternalMessageService_SaveMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessage"/>
+  </wsdl:message>
+  <wsdl:message name="IExternalMessageService_SaveMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveMessageResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IExternalMessageService">
+    <wsdl:operation name="SaveMessage">
+      <wsdl:input wsaw:Action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessage" message="tns:IExternalMessageService_SaveMessage_InputMessage"/>
+      <wsdl:output wsaw:Action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessageResponse" message="tns:IExternalMessageService_SaveMessage_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExternalMessageServiceEndPoint" type="tns:IExternalMessageService">
+    <wsp:PolicyReference URI="#ExternalMessageServiceEndPoint_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SaveMessage">
+      <soap12:operation soapAction="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessage" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExternalMessageService">
+    <wsdl:port name="ExternalMessageServiceEndPoint" binding="tns:ExternalMessageServiceEndPoint">
+      <soap12:address location="https://localhost/Portal.ExternalServiceInterface/ExternalMessageService.svc"/>
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://localhost/Portal.ExternalServiceInterface/ExternalMessageService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <X509Data>
+              <X509Certificate>MIIFfzCCBGegAwIBAgIKYWpUdwAAAAAAEDANBgkqhkiG9w0BAQUFADAhMR8wHQYDVQQDExZTb3ByYUJhbmtpbmdNRUMtREVWLUNBMB4XDTE0MDIwNzEzMjc1OFoXDTE5MDIwNzEzMzc1OFowdDELMAkGA1UEBhMCQkUxEDAOBgNVBAgTB0FudHdlcnAxETAPBgNVBAcTCE1lY2hlbGVuMR8wHQYDVQQKExZTb3ByYSBCYW5raW5nIFNvZnR3YXJlMQswCQYDVQQLEwJJVDESMBAGA1UEAxMJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA9HRnEO7F44N5NJW3vUftXot2ySj1cmngSEvLjA4DJIwS0B/ItTBjyvWADif8tQrTDX6oNu6C16/iKRc+OMSvC7YH1noT1gnYtxsqlqlUjJ4vYvTlhTsD5d+SQhOgFCezFNdzkheh1C+9damMG4MGnDsemr923jKf6hwDLwQN7b6RtMP24ezfGh3j47vCfmJGbdAxeZrhw5XtFaVsxaymKhTfUaKSEJWM70i9QAhWzbnIJ1cx5TopNtHpZ/oIvErGifu/21OcyvObpZQqMAYM9VRZtYDAkQ083Kx4dAABR0kAkF7LhsIGtjx18dx5YGmf8becBMkgHmdNz3qVUFCLwwIDAQABo4ICZDCCAmAwDgYDVR0PAQH/BAQDAgTwMBMGA1UdJQQMMAoGCCsGAQUFBwMBMHgGCSqGSIb3DQEJDwRrMGkwDgYIKoZIhvcNAwICAgCAMA4GCCqGSIb3DQMEAgIAgDALBglghkgBZQMEASowCwYJYIZIAWUDBAEtMAsGCWCGSAFlAwQBAjALBglghkgBZQMEAQUwBwYFKw4DAgcwCgYIKoZIhvcNAwcwHQYDVR0OBBYEFF+nY1tbGPB5YBKJs8/Ct46RGIc0MB8GA1UdIwQYMBaAFK0sMjFaXGE/MrBfgIZd6+nj2SW/MIGsBgNVHR8EgaQwgaEwgZ6ggZuggZiGSmZpbGU6Ly92bWVjaDAwMzAuaGFzLmJlLnNvcHJhYmFua2luZy9DZXJ0RW5yb2xsL1NvcHJhQmFua2luZ01FQy1ERVYtQ0EuY3JshkpodHRwOi8vdm1lY2gwMDMwLmhhcy5iZS5zb3ByYWJhbmtpbmcvQ2VydEVucm9sbC9Tb3ByYUJhbmtpbmdNRUMtREVWLUNBLmNybDCBwQYIKwYBBQUHAQEEgbQwgbEwVgYIKwYBBQUHMAKGSmZpbGU6Ly92bWVjaDAwMzAuaGFzLmJlLnNvcHJhYmFua2luZy9DZXJ0RW5yb2xsL1NvcHJhQmFua2luZ01FQy1ERVYtQ0EuY2VyMFcGCCsGAQUFBzAChktodHRwOi8vdm1lY2gwMDMwLm1lY2guYmUuc29wcmFiYW5raW5nL0NlcnRFbnJvbGwvU29wcmFCYW5raW5nTUVDLURFVi1DQS5jZXIwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOCAQEAikiHktZoEK/SfEQ1Hkz1fUWoOQ+VIGIBU3QtDdKIXr+7fWB1yUksslIeLNcz1EzFvAAx3d8cug7LDoe9mK5YV/emTVNwvG7IR0Ac8IbzfjA0Sa13z0dycDM+AiM0g2TWEj8swJVbFuOgCFU1TClmv0TQe6f/O7zkNJGB7Q8sxounujFcm41qIPwz2xwFbXvwnQsy8YOu41VSwAkGaDo3vBDJom3j+3e936At0NH0b7XOLuVCQKA4G01qePNLLquDl4Ncz/p3T6rZiNf7kiNB/NcWTFlVHQqjFvf34eAxjD2kaF4s2hJC1zLb6BtpOXp1K6YZVgMw3KDUVj/hJq76vQ==</X509Certificate>
+            </X509Data>
+          </KeyInfo>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://ITEM-70650:8088/mockExternalMessageServiceEndPoint</con:endpoint><con:endpoint>http://ITEM-70857:8088/mockExternalMessageServiceEndPoint</con:endpoint><con:endpoint>https://localhost/Portal.ExternalServiceInterface/ExternalMessageService.svc</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessage" name="SaveMessage" bindingOperationName="SaveMessage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="7919cd83-a04e-4bc5-8bd3-1975baf6f769"><con:settings/><con:call name="Request 1" useWsAddressing="true" id="b40b94b0-3792-4b0d-9208-82858ac18b82"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://dwinmsswsp01.duns.uk.sopra:8092/mockExternalMessageServiceEndPoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:acc="http://www.baiworld.com/componentBanker/portal/accountService" xmlns:bai="http://schemas.datacontract.org/2004/07/Bai.Portal.External">
+   <soap:Header/>
+   <soap:Body>
+      <ns2:SaveMessage xmlns="http://schemas.datacontract.org/2004/07/Bai.Portal.External" xmlns:ns2="http://www.baiworld.com/componentBanker/portal/accountService">
+         <SaveMessageRequest>
+            <AccountNumber>M123457</AccountNumber>
+            <Customers>
+               <MessageRequestCustomer>
+                  <CustomerNumber>123457</CustomerNumber>
+                  <CustomerSaluation>Mr E Bronte</CustomerSaluation>
+               </MessageRequestCustomer>
+              
+            </Customers>
+            <DiaryEventCode>DR1</DiaryEventCode>
+            <DiaryEventCompletionDate>2006-08-31T14:34:12.000+05:30</DiaryEventCompletionDate>
+            <DiaryText>No 2 approach</DiaryText>
+         </SaveMessageRequest>
+      </ns2:SaveMessage>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessage"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="9094" path="/mockExternalMessageServiceEndPoint" host="swinmssauto09.noid.in.ssg" name="ExternalMessageServiceEndPoint MockService" bindToHostOnly="false" docroot="" id="f8a6f313-79a4-4870-80e0-dfa3609f7250"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting><con:setting id="com.eviware.soapui.impl.wsdl.panels.mock.WsdlMockServiceDesktopPanel$LogListModel@maxSize">100</con:setting></con:settings><con:properties/><con:mockOperation name="SaveMessage" interface="ExternalMessageServiceEndPoint" operation="SaveMessage" id="e70e513d-968d-4e20-a9aa-44f59f094ecd"><con:settings/><con:defaultResponse>Response 3 Null</con:defaultResponse><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:dispatchPath/><con:response name="Response 1 True" httpResponseStatus="200" encoding="UTF-8" id="31ae89e8-8d87-432f-b894-26bee5e6435c"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:acc="http://www.baiworld.com/componentBanker/portal/accountService">
+   <soap:Header/>
+   <soap:Body>
+      <acc:SaveMessageResponse>
+         <!--Optional:-->
+         <acc:SaveMessageResult>true</acc:SaveMessageResult>
+      </acc:SaveMessageResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessageResponse"/></con:response><con:response name="Response 2 False" httpResponseStatus="200" encoding="UTF-8" id="502dd83c-90de-4e91-8183-9ad3009caca5"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:acc="http://www.baiworld.com/componentBanker/portal/accountService">
+   <soap:Header/>
+   <soap:Body>
+      <acc:SaveMessageResponse>
+         <!--Optional:-->
+         <acc:SaveMessageResult>false</acc:SaveMessageResult>
+      </acc:SaveMessageResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessageResponse"/></con:response><con:response name="Response 3 Null" httpResponseStatus="200" encoding="UTF-8" id="68e7d8e6-d04d-4761-a95b-4cb251a9440a"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:acc="http://www.baiworld.com/componentBanker/portal/accountService">
+   <soap:Header/>
+   <soap:Body>
+      <acc:SaveMessageResponse>
+         <!--Optional:-->
+         <acc:SaveMessageResult></acc:SaveMessageResult>
+      </acc:SaveMessageResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.baiworld.com/componentBanker/portal/accountService/IExternalMessageService/SaveMessageResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>True</con:name><con:query>//*:CustomerNumber[1]</con:query><con:match>123459</con:match><con:response>Response 1 True</con:response><con:disabled>false</con:disabled></con:query><con:query><con:name>False</con:name><con:query>//*:CustomerNumber[1]</con:query><con:match>123458</con:match><con:response>Response 2 False</con:response><con:disabled>false</con:disabled></con:query></con:dispatchConfig></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,0 +1,32 @@
+KFCOMPLETIONSMV	Keyword Framework Macro		0	N	Y	A
+00001	DECLARE		option,ACCVALID,ACCSTAT	Wfl00031 Wfl00092 Wfl00093 Wfl00122 Wfl00183
+00002	SERVICE		'NVUO_MACRO_NEWSTAGE','A','60'	Check Whether Case Can Move To New Stage
+00003	MESSAGEBOX		option,'Await Completion Confirmation','Has Completion Occurred ?',QUESTION,YESNO	
+00004	IF		option = 'NO',DELAY	
+00005	COMMENT		It is possible to have completed on summit but the transactions may not have been posted. This maybe because the cheque number had not be allocated (i.e. no maf20 row, interrogated within transactions. In order to get around this if the application is already completed then skip completion but still perform transaction posting.	
+00006	COMMENT		Recalculate reg payment and 1st payment - this may have changed as a result of completion date being revised	
+00007	SERVICE		'S_REPAYMENTAPR','',''	Calculate The Mortgage Repayment
+00008	SERVICE		'NVUO_MACRO_RECALC_INSPREMIUMS','',''	Recalculate Insurance Premium
+00009	IF		$APPSTATUS = 'C',TRANS	
+00010	SELECT		'ACM01.ACCSTATUS INTO :ACCSTAT FROM ACM01 WHERE ACM01.ACCNO = (SELECT MIN (ACCNO) FROM ACM01 WHERE ACM01.MORTGAGE = :$MORTGAGE AND ACM01.ACCSEQ = :$APPLSEQ)'	Check for returned funds after completion
+00011	IF		ACCSTAT # 'L',COMP	If main sub-account not live then go to complete
+00012	SERVICE		'NVUO_MACRO_STATUS_COMPLETED','',''	Set Application Status To Completed
+00013	JUMP		TRANS	Go to post transactions
+00014	WINDOW	COMP	'W_AP034_01','',''	Maintain Completion Details
+00015	SERVICE		'NVUO_MACRO_COMPLETION','',''	Generate OMNIA Interface Files
+00016	SERVICE	*	'NVUO_MACRO_MOMENTUM','',''	Write Insurance Details To Momentum
+00017	COMMIT			
+00018	SERVICE		'NVUO_MACRO_DIARY_EVENTS','','','',''	Diary Events Service
+00019	COMMIT			
+00020	SERVICE		'NVUO_AUTO_ACC_VALIDATION','','','',''	Auto Account Validation
+00021	COMMIT			
+00022	LET		ACCVALID = 'Y'	
+00023	SELECT		''N' INTO :ACCVALID FROM OPEN_TASKS WHERE OPEN_TASKS.MORTGAGE = :$MORTGAGE AND OPEN_TASKS.STAGETYPE = 'A' AND OPEN_TASKS.PROGPNT = 'AVP''	Check for Account Validation Pending Task
+00024	IF		ACCVALID # 'N',TRANS	If no task validation successful so post transactions
+00025	RETURN			
+00026	MACRO	TRANS	'TRANSACTIONS'	Post Transactions To Summit
+00027	SERVICE		'NVUO_MACRO_CLASS_GROUP','','','',''	Added by Sally Harris. Account classification/ capital adequacy grouping service.
+00028	SERVICE		'NVUO_MACRO_DEEDS_UPDATE','','','',''	Update Deeds Movement Details
+00029	RETURN			
+00030	PACKAGE	DELAY	'COMPCONF'	Completion Confirm Package
+00031	RETURN			
